@@ -1,17 +1,33 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/router'; 
 import styles from './LoginForm.module.css';
 import Logo from './Logo';
 import SignupLink from './SignupLink';
+import { login } from '../../services/authService';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter(); 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Login");
+    setLoading(true);
+    setError(null);
+
+    try {
+      const result = await login(email, password);
+      console.log('Login successful:', result);
+      router.push('/');
+    } catch (error) {
+      setError('Error al iniciar sesión. Intente de nuevo');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -42,12 +58,12 @@ const LoginForm = () => {
             placeholder='Contraseña'
           />
         </div>
-        
-        <button type="submit" className={styles.button}>
-          Iniciar sesión
+
+        <button type="submit" className={styles.button} disabled={loading}>
+          {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
         </button>
 
-        {/*submitted && <p className={styles.submittedMessage}>Form submitted!</p>*/}
+        {error && <p className={styles.errorMessage}>{error}</p>}
         
         <SignupLink />
       </form>

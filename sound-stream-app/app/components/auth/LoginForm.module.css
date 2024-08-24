@@ -56,3 +56,8 @@
   color: #0070f3;
   text-decoration: none;
 }
+
+.errorMessage {
+  color: rgb(219, 49, 49);
+  margin-top: 10px;
+}
