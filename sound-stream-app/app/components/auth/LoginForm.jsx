@@ -1,36 +1,53 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/router'; 
 import styles from './LoginForm.module.css';
+import Logo from './Logo';
+import SignupLink from './SignupLink';
+import { login } from '../../services/authService';
 
 const LoginForm = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter(); 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    setSubmitted(true);
-    console.log('Username:', username);
-    console.log('Password:', password);
+    setLoading(true);
+    setError(null);
+
+    try {
+      const result = await login(email, password);
+      console.log('Login successful:', result);
+      router.push('/');
+    } catch (error) {
+      setError('Error al iniciar sesión. Intente de nuevo');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className={styles.formContainer}>
+    <div className={styles.formWrapper}>
+      <Logo />
+
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
-          <label className={styles.label} htmlFor="username">Username</label>
           <input
             className={styles.input}
             type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
+            placeholder='Correo electrónico'
           />
         </div>
+
         <div className={styles.formGroup}>
-          <label className={styles.label} htmlFor="password">Password</label>
           <input
             className={styles.input}
             type="password"
@@ -38,12 +55,17 @@ const LoginForm = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder='Contraseña'
           />
         </div>
-        <button type="submit" className={styles.button}>
-          Login
+
+        <button type="submit" className={styles.button} disabled={loading}>
+          {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
         </button>
-        {submitted && <p className={styles.submittedMessage}>Form submitted!</p>}
+
+        {error && <p className={styles.errorMessage}>{error}</p>}
+        
+        <SignupLink />
       </form>
     </div>
   );
