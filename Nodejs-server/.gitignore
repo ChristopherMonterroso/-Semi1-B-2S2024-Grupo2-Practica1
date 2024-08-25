@@ -1,0 +1,5 @@
+/node_modules
+.env
+docs/*
+src/models/index.js
+test.js
