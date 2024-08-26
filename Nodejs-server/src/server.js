@@ -4,12 +4,21 @@ const cors = require('cors');
 const connectDB = require('./config/db').connectDB;
 const userRoutes = require('./routes/userRoutes');
 const songRoutes = require('./routes/songRoutes');
+const playlistRoutes = require('./routes/playlistRoutes');
+const playlistSongsRoutes = require('./routes/playlistSongsRoutes');
+const FavoriteRoutes = require('./routes/favoriteRoutes');
 const { sequelize } = require('./config/db');
+
+
 const app = express();
-app.use(express.json());
+app.use(express.json()); 
 app.use(cors());
 app.use('/api/users', userRoutes);
 app.use('/api/songs', songRoutes);
+app.use('/api/user/playlist', playlistRoutes);
+app.use('/api/user/playlist', playlistSongsRoutes);
+app.use('/api/user/favorite', FavoriteRoutes);
+
 const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {

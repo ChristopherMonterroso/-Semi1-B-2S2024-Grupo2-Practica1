@@ -21,20 +21,23 @@ const upload = multer({ storage: multer.memoryStorage() }).fields([
 const createSong = async (req, res) => {
   upload(req, res, async (err) => {
     if (err) {
-      return res.status(500).json({ message: "Error uploading files", error: err });
+      return res.status(500).json({ message: "Error uploading files", error: err, status: false});
     }
 
     try {
       const { name, duration, artist } = req.body;
 
       if (!name || !duration || !artist || !req.files['photo'] || !req.files['mp3File']) {
-        return res.status(400).json({ message: "All fields are required" });
+        return res.status(400).json({ message: "All fields are required", status: false });
       }
-
+      const existingSong = await Song.findOne({ where: { name } });
+      if (existingSong) {
+        return res.status(400).json({ message: "Song already exists", status: false });
+      }
       // Subir la foto a S3
       const photoUploadParams = {
         Bucket: process.env.BUCKET_NAME,
-        Key: `Fotos/${Date.now()}_${req.files['photo'][0].originalname}`,
+        Key: `Fotos/SC_${Date.now()}_${req.files['photo'][0].originalname}`,
         Body: req.files['photo'][0].buffer,
         ContentType: req.files['photo'][0].mimetype,
       };
@@ -58,7 +61,7 @@ const createSong = async (req, res) => {
         mp3File: mp3Data.Location  // URL del archivo MP3
       });
 
-      res.status(201).json({ message: "Song created successfully", song, status: true });
+      res.status(201).json({song, message: "Song created successfully", song, status: true });
     } catch (error) {
       res.status(500).json({ message: "Error creating song", error, status: false });
     }
@@ -69,16 +72,17 @@ const createSong = async (req, res) => {
 const updateSong = async (req, res) => {
   upload(req, res, async (err) => {
     if (err) {
-      return res.status(500).json({ message: "Error uploading files", error: err });
+      return res.status(500).json({ message: "Error uploading files", error: err, status: false });
     }
 
     try {
+      console.log(req.files);
       const { id } = req.params;
       const { name, duration, artist } = req.body;
 
       const song = await Song.findByPk(id);
       if (!song) {
-        return res.status(404).json({ message: "Song not found" });
+        return res.status(404).json({ message: "Song not found", status: false });
       }
 
       const updateData = {};
@@ -87,6 +91,8 @@ const updateSong = async (req, res) => {
       if (artist) updateData.artist = artist;
 
       // Subir una nueva foto si existe
+      if (req.files !== undefined) {
+
       if (req.files['photo']) {
         const photoUploadParams = {
           Bucket: process.env.BUCKET_NAME,
@@ -109,7 +115,7 @@ const updateSong = async (req, res) => {
         const mp3Data = await s3.upload(mp3UploadParams).promise();
         updateData.mp3File = mp3Data.Location;
       }
-
+    }
       // Actualiza la canción en la base de datos
       await Song.update(updateData, { where: { id } });
       res.status(200).json({ message: "Song updated successfully", status: true });
@@ -123,9 +129,9 @@ const updateSong = async (req, res) => {
 const getAllSongs = async (req, res) => {
   try {
     const songs = await Song.findAll();
-    res.status(200).json(songs);
+    res.status(200).json({songs, status: true });
   } catch (error) {
-    res.status(500).json({ message: "Error fetching songs", error });
+    res.status(500).json({ message: "Error fetching songs", error, status: false });
   }
 };
 
@@ -135,11 +141,11 @@ const getSongById = async (req, res) => {
     const { id } = req.params;
     const song = await Song.findByPk(id);
     if (!song) {
-      return res.status(404).json({ message: "Song not found" });
+      return res.status(404).json({ message: "Song not found", status: false });
     }
-    res.status(200).json(song);
+    res.status(200).json({ song, status: true });
   } catch (error) {
-    res.status(500).json({ message: "Error fetching song", error });
+    res.status(500).json({ message: "Error fetching song", error, status: false });
   }
 };
 
@@ -149,7 +155,7 @@ const deleteSong = async (req, res) => {
     const { id } = req.params;
     const song = await Song.findByPk(id);
     if (!song) {
-      return res.status(404).json({ message: "Song not found" });
+      return res.status(404).json({ message: "Song not found", status: false });
     }
 
     await Song.destroy({ where: { id } });

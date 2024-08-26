@@ -44,71 +44,10 @@ const User = sequelize.define('User', {
 
 module.exports = User;
 
-// Modelo para Canciones
-/*const Cancion = sequelize.define('Cancion', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  nombre: {
-    type: DataTypes.STRING(100),
-    allowNull: false
-  },
-  fotografia: {
-    type: DataTypes.STRING(255),
-    allowNull: false
-  },
-  duracion: {
-    type: DataTypes.TIME,
-    allowNull: false
-  },
-  artista: {
-    type: DataTypes.STRING(100),
-    allowNull: false
-  },
-  archivoMp3: {
-    type: DataTypes.STRING(255),
-    allowNull: false
-  },
-  fechaCreacion: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
-  }
-});
 
 // Modelo para Playlists
-const Playlist = sequelize.define('Playlist', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  nombre: {
-    type: DataTypes.STRING(100),
-    allowNull: false
-  },
-  descripcion: {
-    type: DataTypes.TEXT,
-    allowNull: true
-  },
-  fondoPortada: {
-    type: DataTypes.STRING(255),
-    allowNull: false
-  },
-  usuarioId: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: Usuario,
-      key: 'id'
-    }
-  },
-  fechaCreacion: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
-  }
-});
 
+/*
 // Modelo para Canciones_Playlists (Relación Muchos a Muchos)
 const CancionPlaylist = sequelize.define('CancionPlaylist', {
   id: {
