@@ -1,54 +1,63 @@
-.formContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Centra el formulario verticalmente en la vista */
+.formWrapper {
+  max-width: 400px;
+  width: 100%;
+  background-color: #dacaef;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo img {
+  width: 100px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  width: 300px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #fff;
 }
 
 .formGroup {
   margin-bottom: 15px;
 }
 
-.label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
 .input {
-  width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-  border: 1px solid #ddd;
+  width: 96%;/*100% no funciona?*/
+  padding: 8px;
+  border: 1px solid #ccc;
   border-radius: 4px;
 }
 
 .button {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: white;
+  width: 100%;
+  padding: 10px;
   background-color: #0070f3;
+  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.button:hover {
-  background-color: #005bb5;
 }
 
 .submittedMessage {
-  margin-top: 10px;
   color: green;
+  margin-top: 10px;
+}
+
+.signupLink {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.link {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.errorMessage {
+  color: rgb(219, 49, 49);
+  margin-top: 10px;
 }
