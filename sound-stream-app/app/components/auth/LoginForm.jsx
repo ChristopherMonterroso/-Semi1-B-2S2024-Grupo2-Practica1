@@ -21,8 +21,12 @@ const LoginForm = () => {
 
     try {
       const result = await login(email, password);
-      console.log('Login successful:', result);
-      router.push('/');
+      if (result.status) {
+        console.log('Login successful:', result);
+        router.push('/');
+      } else {
+        setError(`Ocurrio un error. ${result.message}`);
+      }
     } catch (error) {
       setError('Error al iniciar sesión. Intente de nuevo');
     } finally {
@@ -38,7 +42,7 @@ const LoginForm = () => {
         <div className={styles.formGroup}>
           <input
             className={styles.input}
-            type="text"
+            type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
