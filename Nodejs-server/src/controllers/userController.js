@@ -19,7 +19,7 @@ const upload = multer({ storage: multer.memoryStorage() }).single('profilePhoto'
 const createUser = async (req, res) => {
   upload(req, res, async (err) => {
     if (err) {
-      return res.status(500).json({ message: "Error uploading file", error: err });
+      return res.status(500).json({ message: "Error uploading file", error: err , status: false});
     }
     console.log(req.file);
     try {
@@ -27,12 +27,12 @@ const createUser = async (req, res) => {
       const rol = "Sub";
       
       if (!name || !email || !password || !lastName || !birthdate || !req.file) {
-        return res.status(400).json({ message: "All fields are required" });
+        return res.status(400).json({ message: "All fields are required" , status: false});
       }
 
       const existingUser = await User.findOne({ where: { email } });
       if (existingUser) {
-        return res.status(400).json({ message: "Email already in use" });
+        return res.status(400).json({ message: "Email already in use" , status: false});
       }
 
       // Encrypt password
@@ -59,7 +59,7 @@ const createUser = async (req, res) => {
         profilePhoto: data.Location // Guarda la URL de la imagen en la base de datos
       });
 
-      res.status(201).json({ message: "User created successfully", user: user, status: true });
+      res.status(201).json({ message: "User created successfully", user, status: true });
     } catch (error) {
       res.status(500).json({ message: "Error creating user", error, status: false });
     }
@@ -71,7 +71,7 @@ const createUser = async (req, res) => {
 const updateUser = async (req, res) => {
   upload(req, res, async (err) => {
     if (err) {
-      return res.status(500).json({ message: "Error uploading file", error: err });
+      return res.status(500).json({ message: "Error uploading file", error: err, status: false });
     }
 
     try {
@@ -79,23 +79,29 @@ const updateUser = async (req, res) => {
       const { name, lastName, email, password } = req.body;
 
       if (!password) {
-        return res.status(400).json({ message: "Password is required" });
+        return res.status(400).json({ message: "Password is required", status: false });
       }
       if (!id) {
-        return res.status(400).json({ message: "User ID is required" });
+        return res.status(400).json({ message: "User ID is required", status: false });
       }
       if (id === 1) {
-        return res.status(400).json({ message: "You cannot update the admin user" });
+        return res.status(400).json({ message: "You cannot update the admin user", status: false });
       }
 
       const user = await User.findByPk(id);
       if (!user) {
-        return res.status(404).json({ message: "User not found" });
+        return res.status(404).json({ message: "User not found", status: false });
+      }
+      if (email){
+        const isEmailInUse = await User.findOne({ where: { email, id: { [Op.ne]: id } } });
+        if (isEmailInUse) {
+          return res.status(400).json({ message: "Email already in use", status: false });
+        }
       }
 
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!isPasswordValid) {
-        return res.status(401).json({ message: "Incorrect password" });
+        return res.status(401).json({ message: "Incorrect password",  status: false});
       }
 
       const updateData = {};
@@ -107,7 +113,7 @@ const updateUser = async (req, res) => {
       if (req.file) {
         const uploadParams = {
           Bucket: process.env.BUCKET_NAME,
-          Key: `Fotos/${Date.now()}_${req.file.originalname}`,
+          Key: `Fotos/U_${Date.now()}_${req.file.originalname}`,
           Body: req.file.buffer,
           ContentType: req.file.mimetype
         };
@@ -135,22 +141,22 @@ const authenticateUser = async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
-      return res.status(400).json({ message: "Email and password are required" });
+      return res.status(400).json({ message: "Email and password are required", status: false });
     }
 
     const user = await User.findOne({ where: { email } });
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ message: "User not found",  status: false});
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      return res.status(401).json({ message: "Incorrect password" });
+      return res.status(401).json({ message: "Incorrect password", status: false });
     }
 
-    res.status(200).json({ message: "User authenticated successfully", user });
+    res.status(200).json({ message: "User authenticated successfully", user , status: true});
   } catch (error) {
-    res.status(500).json({ message: "Error authenticating user", error });
+    res.status(500).json({ message: "Error authenticating user", error, status: false });
   }
 }
 
@@ -159,9 +165,9 @@ const authenticateUser = async (req, res) => {
 const getUsers = async (req, res) => {
   try {
     const users = await User.findAll();
-    res.status(200).json(users);
+    res.status(200).json({ users, status: true });
   } catch (error) {
-    res.status(500).json({ message: "Error fetching users", error });
+    res.status(500).json({ message: "Error fetching users", error, status: false });
   }
 };
 
@@ -169,18 +175,18 @@ const deleteUser = async (req, res) => {
   try {
     const { id } = req.params;
     if (!id) {
-      return res.status(400).json({ message: "User ID is required" });  
+      return res.status(400).json({ message: "User ID is required", status: false });  
     }
     const user = await User.findByPk(id);
 
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ message: "User not found", status: false });
     }
 
     await user.destroy();
-    res.status(200).json({ message: "User deleted successfully" });
+    res.status(200).json({ message: "User deleted successfully", status: true});
   } catch (error) {
-    res.status(500).json({ message: "Error deleting user", error });
+    res.status(500).json({ message: "Error deleting user", error, status: false });
   }
 };
 

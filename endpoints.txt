@@ -1,0 +1,88 @@
+localhost:5000/api/users/  POST - crear usuarios
+{
+    "name": "",
+    "lastName": "",
+    "email": "",
+    "password": "",
+    "birthdate": "",
+}
+
+
+localhost:5000/api/users/ GET  - Obtener usuarios
+
+localhost:5000/api/users/authenticate POST - Autenticar usuario
+{
+    "email":"",
+    "password":""
+
+}
+
+localhost:5000/api/users/:id -PUT Actualizar datos de usuario
+{
+    "name": "",
+    "lastName": "",
+    "email": "",
+    "profilePhoto: file
+    "password":"" 
+
+}
+
+localhost:5000/api/songs POST crear cancion
+{       
+    "name": "Anoter bites the dust",
+    "duration": 3:43,
+    "artist": "QUEEN",
+    "photo": file,
+    "mp3File": file,
+}
+
+localhost:5000/api/songs -GET Obtener canciones
+
+localhost:5000/api/songs/:id - GET Obtener canciones por i
+
+localhost:5000/api/songs/:id - PUT Actualizar los datos de una canción
+
+{
+    "artist":"Queen" 
+
+}
+
+localhost:5000/api/songs/:id - DELETE Eliminar canción por id
+
+localhost:5000/api/user/playlist - GET
+
+localhost:5000/api/user/playlist - POST Crear una nueva playlist
+{
+    "name": "",
+    "description": "",
+    "cover": file,
+    "id_user": "",
+}
+
+localhost:5000/api/user/playlist/:id - GET obtener playlist por id
+
+localhost:5000/api/user/playlist?id_user=3 - GET obtener playlist por id de usuario
+
+localhost:5000/api/user/playlist/:id PUT - Actualizar playlist
+
+{
+    "name": "",
+    "description": "",
+    "cover": "",
+}
+
+localhost:5000/api/user/playlist/6 - DELETE Eliminar playlist
+
+localhost:5000/api/user/playlist/addSong
+{
+    "id_playlist": 5,
+    "id_song": 3
+}
+
+localhost:5000/api/user/playlist/:id_playlist/getSongs - GET Obtener canciones por playlist
+
+localhost:5000/api/user/playlist/deleteSong/:id_playlist/:id_song - DELETE eliminar cancion de una playlist
+/deleteSong/5/1
+
+
+password = chris123
