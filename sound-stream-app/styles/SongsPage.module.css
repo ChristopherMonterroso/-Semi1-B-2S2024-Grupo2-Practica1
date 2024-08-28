@@ -1,0 +1,68 @@
+.adminContainer {
+    padding: 20px;
+    background-color: #dacaef;
+    min-height: 100vh;
+  }
+  
+  .createButton {
+    background-color: #0070f3;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .songList {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .songItem {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .songImage {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 15px;
+  }
+  
+  .songDetails {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .songActions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .editButton,
+  .deleteButton {
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .deleteButton {
+    background-color: #ff4d4d;
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
