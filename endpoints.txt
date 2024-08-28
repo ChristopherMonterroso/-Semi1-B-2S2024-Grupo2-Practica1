@@ -61,7 +61,7 @@ localhost:5000/api/user/playlist - POST Crear una nueva playlist
 
 localhost:5000/api/user/playlist/:id - GET obtener playlist por id
 
-localhost:5000/api/user/playlist?id_user=3 - GET obtener playlist por id de usuario
+localhost:5000/api/user/playlist/by_user?id_user=3 - GET obtener playlist por id de usuario
 
 localhost:5000/api/user/playlist/:id PUT - Actualizar playlist
 
