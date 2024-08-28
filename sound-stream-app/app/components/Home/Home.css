@@ -1,0 +1,40 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    width: 100vw; /* Ocupa todo el ancho de la pantalla */
+  }
+  
+  .main {
+    display: flex;
+    flex: 1; /* Ocupa todo el espacio vertical disponible, excepto el espacio del Player */
+    overflow: hidden; /* Evita que los contenidos se desborden */
+  }
+  
+  .sidebar {
+    width: 400px; /* Ancho fijo para la barra lateral */
+    background-color: #1c1c1c; /* Ejemplo de fondo */
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .main-content {
+    flex: 1; /* Ocupa el espacio restante a la derecha del Sidebar */
+    background-color: #121212; /* Ejemplo de fondo */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .player {
+    height: 80px; /* Fija la altura del Player */
+    background-color: #916bbf; /* Ejemplo de fondo */
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+    

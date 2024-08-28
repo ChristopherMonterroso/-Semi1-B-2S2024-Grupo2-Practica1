@@ -1,0 +1,23 @@
+.main-content {
+    padding: 20px;
+    color: white;
+    background-color: #121212;
+    flex: 1;
+  }
+  
+  .album-section {
+    margin-top: 20px;
+  }
+  
+  .albums {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .albums img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
