@@ -1,6 +1,7 @@
-export const API_BASE_URL = 'https://dummyjson.com';
+export const API_BASE_URL = 'http://localhost:5000/api';
 
 export const ENDPOINTS = {
-  LOGIN: '/user/login',
-  REGISTER: '/register'
+  LOGIN: '/users/authenticate',
+  REGISTER: '/users',
+  UPDATE_USER: '/users'
 };

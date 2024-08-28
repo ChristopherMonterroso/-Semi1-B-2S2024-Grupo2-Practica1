@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router'; 
 import styles from './LoginForm.module.css';
-import Logo from './Logo';
+import Logo from '../logo/Logo';
 import SignupLink from './SignupLink';
 import { login } from '../../services/authService';
 
@@ -21,8 +21,13 @@ const LoginForm = () => {
 
     try {
       const result = await login(email, password);
-      console.log('Login successful:', result);
-      router.push('/');
+      if (result.status) {
+        console.log('Login successful:', result);
+        localStorage.setItem('user', JSON.stringify(result.user));
+        router.push('/');
+      } else {
+        setError(`Ocurrio un error. ${result.message}`);
+      }
     } catch (error) {
       setError('Error al iniciar sesión. Intente de nuevo');
     } finally {
@@ -38,7 +43,7 @@ const LoginForm = () => {
         <div className={styles.formGroup}>
           <input
             className={styles.input}
-            type="text"
+            type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
