@@ -1,0 +1,32 @@
+.player {
+    background-color: #916bbf;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .controls button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+  
+  .progress-bar {
+    background: #ccc;
+    height: 5px;
+    width: 1400px;
+    position: relative;
+  }
+  
+  .progress {
+    background: #fff;
+    height: 100%;
+    width: 40%;
+    position: absolute;
+  }
+  
