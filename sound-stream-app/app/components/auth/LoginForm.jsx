@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router'; 
 import styles from './LoginForm.module.css';
-import Logo from './Logo';
+import Logo from '../logo/Logo';
 import SignupLink from './SignupLink';
 import { login } from '../../services/authService';
 
@@ -23,6 +23,7 @@ const LoginForm = () => {
       const result = await login(email, password);
       if (result.status) {
         console.log('Login successful:', result);
+        localStorage.setItem('user', JSON.stringify(result.user));
         router.push('/');
       } else {
         setError(`Ocurrio un error. ${result.message}`);

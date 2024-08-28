@@ -1,4 +1,4 @@
-import styles from './LoginForm.module.css';
+import styles from './Logo.module.css';
 
 const Logo = () => {
   return (
