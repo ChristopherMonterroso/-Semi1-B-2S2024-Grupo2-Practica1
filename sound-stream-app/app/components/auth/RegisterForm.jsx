@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router'; 
 import styles from './LoginForm.module.css';
-import Logo from './Logo';
+import Logo from '../logo/Logo';
 import { registerUser } from '../../services/registerService';
 
 const RegisterForm = () => {
@@ -26,7 +26,7 @@ const RegisterForm = () => {
       const result = await registerUser(name, lastName, email, password, birthdate, profilePhoto);
       if (result.status) {
         console.log('Registration successful:', result);
-        //router.push('/');
+        router.push('/login');
       } else {
         setError(`Ocurrió un error. ${result.message}`);
       }
