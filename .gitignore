@@ -1,1 +1,4 @@
 samples
+*.pyc
+
+Python-server/.env
