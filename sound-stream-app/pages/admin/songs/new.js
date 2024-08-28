@@ -57,13 +57,17 @@ const CreateSongPage = () => {
     const newSong = await createSong(formData);
 
     setIsCreating(false);
-    setModalMessage(newSong ? 'Canción creada con éxito. Redirigiendo a la página de canciones..' : 'Error al crear la canción');
-
     if (newSong) {
+      setModalMessage('Canción creada con éxito. Redirigiendo a la página de canciones..');
       setTimeout(() => {
         setShowModal(false);
         router.push('/admin/songs');
       }, seconds * 1000);
+    } else {
+      setModalMessage('Error al crear la canción');
+      setTimeout(() => {
+        setShowModal(false);
+      }, 5000);
     }
   };
 
