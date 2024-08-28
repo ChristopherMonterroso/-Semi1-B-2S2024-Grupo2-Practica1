@@ -96,7 +96,7 @@ const updateSong = async (req, res) => {
       if (req.files['photo']) {
         const photoUploadParams = {
           Bucket: process.env.BUCKET_NAME,
-          Key: `Fotos/${Date.now()}_${req.files['photo'][0].originalname}`,
+          Key: `Fotos/SC_${Date.now()}_${req.files['photo'][0].originalname}`,
           Body: req.files['photo'][0].buffer,
           ContentType: req.files['photo'][0].mimetype,
         };
@@ -108,7 +108,7 @@ const updateSong = async (req, res) => {
       if (req.files['mp3File']) {
         const mp3UploadParams = {
           Bucket: process.env.BUCKET_NAME,
-          Key: `Mp3Files/${Date.now()}_${req.files['mp3File'][0].originalname}`,
+          Key: `Canciones/${Date.now()}_${req.files['mp3File'][0].originalname}`,
           Body: req.files['mp3File'][0].buffer,
           ContentType: req.files['mp3File'][0].mimetype,
         };
