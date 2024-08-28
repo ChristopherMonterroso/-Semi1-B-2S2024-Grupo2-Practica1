@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { createSong } from '../../../app/services/songsService';
+import { getSongById, updateSong } from '../../../app/services/songsService';
 import Modal from '../../../app/components/songs/Modal';
 import styles from '../../../styles/NewSongPage.module.css';
 import '../../../app/globals.css';
 
-const CreateSongPage = () => {
+const EditSongPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     duration: '',
@@ -15,11 +15,33 @@ const CreateSongPage = () => {
   });
   const [previewImage, setPreviewImage] = useState(null);
   const [previewAudio, setPreviewAudio] = useState(null);
-  const [isCreating, setIsCreating] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
+  const { id } = router.query;
   const seconds = 3;
+
+  useEffect(() => {
+    if (id) {
+      const fetchSong = async () => {
+        const songResponse = await getSongById(id);
+        if (songResponse) {
+          setFormData({
+            name: songResponse.song.name,
+            duration: songResponse.song.duration,
+            artist: songResponse.song.artist,
+            photo: null,
+            mp3File: null,
+          });
+          setPreviewImage(songResponse.song.photo);
+          setPreviewAudio(songResponse.song.mp3File);
+        }
+      };
+
+      fetchSong();
+    }
+  }, [id]);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -50,21 +72,21 @@ const CreateSongPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsCreating(true);
-    setModalMessage('Creando la canción, por favor espera...');
+    setIsUpdating(true);
+    setModalMessage('Actualizando la canción, por favor espera...');
     setShowModal(true);
 
-    const newSong = await createSong(formData);
+    const isUpdated = await updateSong(id, formData);
 
-    setIsCreating(false);
-    if (newSong) {
-      setModalMessage('Canción creada con éxito. Redirigiendo a la página de canciones..');
+    setIsUpdating(false);
+    if (isUpdated) {
+      setModalMessage('Canción actualizada con éxito. Redirigiendo a la página de canciones..');
       setTimeout(() => {
         setShowModal(false);
         router.push('/admin/songs');
       }, seconds * 1000);
     } else {
-      setModalMessage('Error al crear la canción');
+      setModalMessage('Error al actualizar la canción');
       setTimeout(() => {
         setShowModal(false);
       }, seconds * 1000);
@@ -73,12 +95,13 @@ const CreateSongPage = () => {
 
   return (
     <div className={styles.createSongContainer}>
-      <div className={styles.title}>Crear Nueva Canción</div>
+      <div className={styles.title}>Editar Canción</div>
       <form onSubmit={handleSubmit} className={styles.createSongForm}>
         <input
           type="text"
           name="name"
           placeholder="Nombre de la canción"
+          value={formData.name}
           onChange={handleChange}
           required
         />
@@ -94,6 +117,7 @@ const CreateSongPage = () => {
           type="text"
           name="artist"
           placeholder="Artista"
+          value={formData.artist}
           onChange={handleChange}
           required
         />
@@ -105,7 +129,6 @@ const CreateSongPage = () => {
             name="photo"
             onChange={handleChange}
             accept="image/*"
-            required
             className={styles.fileInput}
           />
         </label>
@@ -118,7 +141,6 @@ const CreateSongPage = () => {
             name="mp3File"
             onChange={handleChange}
             accept="audio/mpeg"
-            required
             className={styles.fileInput}
           />
         </label>
@@ -129,8 +151,8 @@ const CreateSongPage = () => {
           </audio>
         )}
         
-        <button type="submit" className={styles.submitButton} disabled={isCreating}>
-          {isCreating ? 'Creando...' : 'Crear Canción'}
+        <button type="submit" className={styles.submitButton} disabled={isUpdating}>
+          {isUpdating ? 'Actualizando...' : 'Actualizar Canción'}
         </button>
       </form>
 
@@ -139,4 +161,4 @@ const CreateSongPage = () => {
   );
 };
 
-export default CreateSongPage;
+export default EditSongPage;
