@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { getSongs, deleteSong } from '../../app/services/songsService';
-import styles from '../../styles/SongsPage.module.css';
-import '../../app/globals.css'
+import { getSongs, deleteSong } from '../../../app/services/songsService';
+import styles from '../../../styles/SongsPage.module.css';
+import '../../../app/globals.css'
 
 const SongsPage = () => {
   const [songs, setSongs] = useState([]);
