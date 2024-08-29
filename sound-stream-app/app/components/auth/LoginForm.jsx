@@ -24,7 +24,7 @@ const LoginForm = () => {
       if (result.status) {
         console.log('Login successful:', result);
         localStorage.setItem('user', JSON.stringify(result.user));
-        router.push('/');
+        router.push('/home');
       } else {
         setError(`Ocurrio un error. ${result.message}`);
       }

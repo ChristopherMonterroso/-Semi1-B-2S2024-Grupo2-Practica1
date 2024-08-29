@@ -2,9 +2,8 @@ import React from 'react';
 import './Navbar.css'; // Asegúrate de crear un archivo CSS para los estilos
 
 function Navbar({ handleInicioClick }) {
-  const handleProfileClick = () => {
-    console.log('perfil');
-  };
+
+  
 
   return (
     <div className="navbar">

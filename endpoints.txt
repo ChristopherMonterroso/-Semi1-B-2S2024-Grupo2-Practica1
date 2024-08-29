@@ -24,7 +24,6 @@ localhost:5000/api/users/:id -PUT Actualizar datos de usuario
     "email": "",
     "profilePhoto: file
     "password":"" 
-
 }
 
 localhost:5000/api/songs POST crear cancion
