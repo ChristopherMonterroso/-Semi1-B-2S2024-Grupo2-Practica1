@@ -44,7 +44,6 @@ const User = sequelize.define('User', {
 
 module.exports = User;
 
-
 // Modelo para Playlists
 
 /*
