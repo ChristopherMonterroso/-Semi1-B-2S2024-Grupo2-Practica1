@@ -74,7 +74,7 @@ const deletePlaylistSong = async (req, res) => {
             return res.status(400).json({ message: "Playlist ID and Song ID are required", status: false });
         }
 
-        const deleted = await PlaylistSongs.destroy({
+        const deleted = await  PlayListSongs.destroy({
             where: { id_playlist: id_playlist, id_song: id_song }
         });
 
