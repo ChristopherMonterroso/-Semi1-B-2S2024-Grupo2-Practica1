@@ -15,6 +15,7 @@ const EditSongPage = () => {
   });
   const [previewImage, setPreviewImage] = useState(null);
   const [previewAudio, setPreviewAudio] = useState(null);
+  const [audioKey, setAudioKey] = useState(Date.now());
   const [isUpdating, setIsUpdating] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -36,6 +37,7 @@ const EditSongPage = () => {
           });
           setPreviewImage(songResponse.song.photo);
           setPreviewAudio(songResponse.song.mp3File);
+          setAudioKey(Date.now());
         }
       };
 
@@ -46,15 +48,18 @@ const EditSongPage = () => {
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (files) {
-      setFormData({ ...formData, [name]: files[0] });
-
+      const file = files[0];
       if (name === 'photo') {
-        setPreviewImage(URL.createObjectURL(files[0]));
+        setFormData({ ...formData, photo: file });
+        setPreviewImage(URL.createObjectURL(file));
       } else if (name === 'mp3File') {
-        const file = files[0];
-        setPreviewAudio(URL.createObjectURL(file));
+        setFormData({ ...formData, mp3File: file });
 
-        const audio = new Audio(URL.createObjectURL(file));
+        const audioUrl = URL.createObjectURL(file);
+        setPreviewAudio(audioUrl);
+        setAudioKey(Date.now()); 
+
+        const audio = new Audio(audioUrl);
         audio.onloadedmetadata = () => {
           const duration = audio.duration;
           const minutes = Math.floor(duration / 60);
@@ -76,7 +81,12 @@ const EditSongPage = () => {
     setModalMessage('Actualizando la canción, por favor espera...');
     setShowModal(true);
 
-    const isUpdated = await updateSong(id, formData);
+    const updatedFormData = {
+      ...formData,
+      mp3File: formData.mp3File ? formData.mp3File : null,
+    };
+
+    const isUpdated = await updateSong(id, updatedFormData);
 
     setIsUpdating(false);
     if (isUpdated) {
@@ -145,7 +155,7 @@ const EditSongPage = () => {
           />
         </label>
         {previewAudio && (
-          <audio controls className={styles.audioPlayer}>
+          <audio key={audioKey} controls className={styles.audioPlayer}>
             <source src={previewAudio} type="audio/mpeg" />
             Tu navegador no soporta la reproducción de audio.
           </audio>
