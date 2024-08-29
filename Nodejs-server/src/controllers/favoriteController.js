@@ -36,23 +36,16 @@ const getFavoriteSongs = async (req, res) => {
         if (!id_user) {
             return res.status(400).json({ message: "User ID is required", status: false });
         }
-
-        const user = await User.findByPk(id_user, {
-            include: {
-                model: Song,
-                through: { attributes: [] } // Excluye las columnas de la tabla de unión
-            }
+        const songs = await Favorite.findAll({
+            where: { id_user },
+            include: Song
         });
-
-        if (!user) {
-            return res.status(404).json({ message: "User not found", status: false });
-        }
-
-        if (user.Songs.length === 0) {
+    
+        if (songs.length === 0) {
             return res.status(404).json({ message: "No favorite songs found", status: false });
         }
 
-        res.status(200).json(user.Songs);
+        res.status(200).json(songs);
     } catch (error) {
         res.status(500).json({ message: "Error fetching favorite songs", error, status: false });
     }
