@@ -80,6 +80,7 @@ const getPlaylistById = async (req, res) => {
 const getPlaylistByUser = async (req, res) => {
   try {
     const { id_user } = req.query;
+    console.log("----->",req)
     const playlist = await Playlist.findAll({ where: { id_user } });
     if (playlist) {
       res.status(200).json({ playlist, status: true });

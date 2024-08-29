@@ -4,6 +4,6 @@ const { addFavorite, getFavoriteSongs, removeFavoriteSong } = require('../contro
 
 router.post('/addFavorite', addFavorite);
 router.get('/:id_user/favorites/', getFavoriteSongs);
-router.delete('/removeFavorite/:id_playlist/:id_song', removeFavoriteSong);
+router.delete('/removeFavorite/:id_user/:id_song', removeFavoriteSong);
 
 module.exports = router;

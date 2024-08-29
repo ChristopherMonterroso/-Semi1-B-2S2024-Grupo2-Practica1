@@ -11,8 +11,8 @@ const {
 const router = express.Router();
 router.post("/", createPlaylist);
 router.get("/", getAllPlaylists);
+router.get("/by_user", getPlaylistByUser);
 router.get("/:id", getPlaylistById);
-router.get("/", getPlaylistByUser);
 router.put("/:id", updatePlaylist); 
 router.delete("/:id", deletePlaylist);
 
