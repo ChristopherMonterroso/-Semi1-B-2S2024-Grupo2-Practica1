@@ -19,6 +19,10 @@ def getAllSongs():
 def getSongById(id):
     return songController.getSongById(id)
 
+@songController_bp.route('/byName/<string:name>', methods=['GET'])
+def getSongByName(name):
+    return songController.getSongByName(name)
+
 @songController_bp.route('/<int:id>', methods=['DELETE'])
 def deleteSong(id):
     return songController.deleteSong(id)
