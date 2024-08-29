@@ -84,5 +84,19 @@ localhost:5000/api/user/playlist/:id_playlist/getSongs - GET Obtener canciones p
 localhost:5000/api/user/playlist/deleteSong/:id_playlist/:id_song - DELETE eliminar cancion de una playlist
 /deleteSong/5/1
 
+http://127.0.0.1:5000/api/user/favorite/addFavorite - POST Agrega una cancion por id_song como facorita a un usuario por id_user
+
+{
+    "id_user": 4,
+    "id_song": 1
+}
+
+http://127.0.0.1:5000/api/user/favorite/:id_user/favorites/ - GET Obtener las canciones favoritas por id_user
+
+http://127.0.0.1:5000/api/user/favorite/2/favorites/
+
+http://127.0.0.1:5000/api/user/favorite/removeFavorite/:id_user/:id_song - DELETE Elimina una cancion del usuario (id_user) con el id de la cancion (id_song)
+
+http://127.0.0.1:5000/api/user/favorite/removeFavorite/2/2
 
 password = chris123

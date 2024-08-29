@@ -61,22 +61,21 @@ def getFavoriteSongs(id_user):
 
         # Convertir las canciones favoritas a diccionario
         favorite_songs_dict = [song.to_dict() for song in favorite_songs]
-
-        return jsonify(favorite_songs_dict), 200
+        return jsonify({"songs": favorite_songs_dict, "status": True}), 200
 
     except Exception as error:
         return jsonify({"message": "Error fetching favorite songs", "error": str(error), "status": False}), 500
 
-def removeFavoriteSong(id_playlist, id_song):
+def removeFavoriteSong(id_user, id_song):
     try:
         # Obtener la sesión de base de datos
         db: Session = next(get_db())
 
-        if not id_playlist or not id_song:
+        if not id_user or not id_song:
             return jsonify({"message": "Playlist ID and Song ID are required", "status": False}), 400
 
         # Eliminar la relación correspondiente
-        deleted = db.query(Favorite).filter_by(id_user=id_playlist, id_song=id_song).delete()
+        deleted = db.query(Favorite).filter_by(id_user=id_user, id_song=id_song).delete()
 
         if not deleted:
             return jsonify({"message": "Favorite not found", "status": False}), 404
