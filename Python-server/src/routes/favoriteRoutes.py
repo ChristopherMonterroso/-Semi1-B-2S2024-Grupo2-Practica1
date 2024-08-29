@@ -11,6 +11,6 @@ def addFavorite():
 def getFavoriteSongs(id_user):
     return favoriteController.getFavoriteSongs(id_user)
 
-@favoriteController_bp.route('/removeFavorite/<int:id_playlist>/<int:id_song>', methods=['DELETE'])
-def removeFavoriteSong(id_playlist, id_song):
-    return favoriteController.removeFavoriteSong(id_playlist, id_song)
+@favoriteController_bp.route('/removeFavorite/<int:id_user>/<int:id_song>', methods=['DELETE'])
+def removeFavoriteSong(id_user, id_song):
+    return favoriteController.removeFavoriteSong(id_user, id_song)

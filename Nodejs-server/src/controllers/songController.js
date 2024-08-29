@@ -149,6 +149,20 @@ const getSongById = async (req, res) => {
   }
 };
 
+const getSongByName = async (req, res) => {
+  try {
+    const { name } = req.params;
+    const song = await Song.findOne({ where: { name } });
+    if (!song) {
+      return res.status(404).json({ message: "Song not found", status: false });
+    }
+    res.status(200).json({ song, status: true });
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching song", error, status: false });
+  }
+}
+
+
 // Eliminar una canción por ID
 const deleteSong = async (req, res) => {
   try {
@@ -169,6 +183,7 @@ module.exports = {
   createSong,
   updateSong,
   getAllSongs,
+  getSongByName,
   getSongById,
   deleteSong
 };

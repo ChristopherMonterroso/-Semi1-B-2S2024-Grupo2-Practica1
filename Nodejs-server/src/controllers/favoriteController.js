@@ -59,7 +59,7 @@ const getFavoriteSongs = async (req, res) => {
 };
 const removeFavoriteSong = async (req, res) => {
     try {
-        const { id_user, id_song } = req.query;
+        const { id_user, id_song } = req.params;
 
         if (!id_user || !id_song) {
             return res.status(400).json({ message: "User ID and Song ID are required", status: false });
