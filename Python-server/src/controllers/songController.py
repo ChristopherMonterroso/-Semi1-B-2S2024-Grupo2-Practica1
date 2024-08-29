@@ -154,6 +154,19 @@ def getSongById(id):
     except Exception as error:
         return jsonify({"message": "Error fetching song", "error": str(error), "status": False}), 500
 
+def getSongByName(name):
+    try:
+        db: Session = next(get_db())
+        song = db.query(Song).filter_by(name=name).first()
+
+        if not song:
+            return jsonify({"message": "Song not found", "status": False}), 404
+
+        return jsonify({"song": song.to_dict(), "status": True}), 200
+
+    except Exception as error:
+        return jsonify({"message": "Error fetching song", "error": str(error), "status": False}), 500
+
 def deleteSong(id):
     try:
         db: Session = next(get_db())
