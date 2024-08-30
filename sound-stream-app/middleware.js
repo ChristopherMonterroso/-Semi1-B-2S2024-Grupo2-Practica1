@@ -4,6 +4,10 @@ export function middleware(req) {
   const { pathname } = req.nextUrl;
   const user = req.cookies.get('user');
 
+  if (user && pathname === '/register') {
+    return NextResponse.redirect(new URL('/home', req.url));
+  }
+
   if (!user && pathname !== '/login') {
     return NextResponse.redirect(new URL('/login', req.url));
   }
@@ -33,6 +37,7 @@ export const config = {
     '/home', 
     '/profile', 
     '/admin/:path*', 
-    '/login'
+    '/login',
+    '/register'
   ],
 };
