@@ -30,7 +30,7 @@ const createSong = async (req, res) => {
       if (!name || !duration || !artist || !req.files['photo'] || !req.files['mp3File']) {
         return res.status(400).json({ message: "All fields are required", status: false });
       }
-      const existingSong = await Song.findOne({ where: { name } });
+      const existingSong = await Song.findOne({ where: { name, artist } });
       if (existingSong) {
         return res.status(400).json({ message: "Song already exists", status: false });
       }
