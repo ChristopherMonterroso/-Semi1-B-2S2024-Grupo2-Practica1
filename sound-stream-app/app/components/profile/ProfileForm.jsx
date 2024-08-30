@@ -33,6 +33,10 @@ const ProfilePage = () => {
     setIsEditable(true);
   };
 
+  const handleRegresar = () => {
+    router.push('/home');
+  };
+
   const handleCancel = () => {
     setIsEditable(false);
     setProfilePhoto(user.profilePhoto);
@@ -147,12 +151,22 @@ const ProfilePage = () => {
             </button>
           </>
         ) : (
+
+          <>
           <button 
             className={styles.button} 
             onClick={handleEdit}
           >
             Editar Perfil
           </button>
+          <button 
+            className={styles.button} 
+            onClick={handleRegresar}
+          >
+            Regresar
+          </button>
+          </>
+          
         )}
 
         {error && <p className={styles.errorMessage}>{error}</p>}
