@@ -105,17 +105,25 @@
   }
 
 
-  .play-button {
+  .play-buttons-container {
+    display: flex;
+    gap: 10px; 
+    justify-content: center; 
+    margin-top: 20px; 
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  .play-button, .like-button, .addPlaylist-button {
+    
     background-color: rgba(0, 0, 0, 0.6);
     border: none;
     color: white;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -128,7 +136,23 @@
     opacity: 1;
   }
   
+  .album:hover .addPlaylist-button {
+    opacity: 1;
+  }
+ 
+  .album:hover .like-button {
+    opacity: 1;
+  }
+  
   .play-button::before {
+    font-size: 24px;
+  }
+
+  .like-button::before {
+    font-size: 24px;
+  }
+
+  .addPlaylist-button::before {
     font-size: 24px;
   }
 

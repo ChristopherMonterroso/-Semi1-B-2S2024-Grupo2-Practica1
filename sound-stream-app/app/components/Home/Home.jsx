@@ -129,10 +129,10 @@ function App() {
 
   return (
     <div className="app">
-    <Navbar handleInicioClick={handleInicioClick}/> 
+    <Navbar setShowPlaylist={setShowPlaylist} UpdateCanciones= {UpdateCanciones} Canciones={Canciones} setCanciones={setCanciones} handleInicioClick={handleInicioClick}/> 
       <div className="main">
         <Sidebar Playlists={Playlists}  setPerfil={setPerfil} UpdatePlaylist={UpdatePlaylist} user={user.id} UpdateCanciones={UpdateCanciones}  setActPlaylists={setActPlaylists}  SongPlaylist={SongPlaylist}/>
-        <MainContent UpdateCanciones= {UpdateCanciones} UpdatePlaylist={UpdatePlaylist} SongPlaylist={SongPlaylist} Perfil={Perfil} Canciones={Canciones} setActCancion={setActCancion} ShowPlaylist={ShowPlaylist} SongsPlaylists={SongsPlaylists} ActPlaylists={ActPlaylists}/>
+        <MainContent Playlists={Playlists} UpdateCanciones= {UpdateCanciones} UpdatePlaylist={UpdatePlaylist} SongPlaylist={SongPlaylist} Perfil={Perfil} Canciones={Canciones} setActCancion={setActCancion} ShowPlaylist={ShowPlaylist} SongsPlaylists={SongsPlaylists} ActPlaylists={ActPlaylists}/>
       </div>
  
       <Player  ActCancion={ActCancion} />

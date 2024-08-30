@@ -1,7 +1,30 @@
-import React from 'react';
+import {React, useState} from 'react';
 import './Navbar.css'; // Asegúrate de crear un archivo CSS para los estilos
 
-function Navbar({ handleInicioClick }) {
+function Navbar({ handleInicioClick, setShowPlaylist, Canciones, setCanciones , UpdateCanciones}) {
+
+ 
+  const handleInputChange = (event) => {
+    const value = event.target.value;
+
+    setShowPlaylist(false);
+
+    if (value==""){
+      UpdateCanciones();
+    }else{
+       // Filtrar los elementos que coinciden con el valor ingresado
+    const filteredItems = Canciones.filter(item => 
+      item.name.toLowerCase().includes(value.toLowerCase())
+    );
+
+    // Imprimir las coincidencias en la consola
+    setCanciones(filteredItems);
+    }
+
+   
+  };
+
+
 
   
 
@@ -13,8 +36,7 @@ function Navbar({ handleInicioClick }) {
         </button>
       </div>
       <div className="navbar-center">
-        <input type="text" placeholder="Buscar..." className="search-input" />
-        <button className="search-button">Buscar</button>
+        <input onChange={handleInputChange} type="text" placeholder="Buscar..." className="search-input" />
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { ADDFAVORITE } from "../../services/LikeFavorite";
 import { DEL_SONGPLAYLIST } from "../../services/DelSongPlay";
 import { DEL_PLAYLIST } from "../../services/DelPLaylist";
 import { DEL_SONGFAVORITE } from "../../services/DelSongFav";
+import { ADDSONGPLAY } from "../../services/AddSongPlay";
 import { login } from "../../services/authService";
 
 import "./MainContent.css";
@@ -17,11 +18,13 @@ function MainContent({
   SongsPlaylists,
   SongPlaylist,
   UpdateCanciones,
-  UpdatePlaylist
+  UpdatePlaylist,
+  Playlists
 }) {
   let userString = localStorage.getItem("user");
   let user = JSON.parse(userString);
 
+  const [showModal, setShowModal] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
   const [MSJ, setMSJ] = useState('');
   const [isEditing, setIsEditing] = useState(false);
@@ -30,6 +33,7 @@ function MainContent({
   const [email, setEmail] = useState(user.email);
   const [profilePhoto, setprofilePhoto] = useState(user.profilePhoto);
   const [password, setPassword] = useState("");
+  const [Idsong, setIdsong] = useState(0);
   const [currentAudio, setCurrentAudio] = useState(null); // Estado para la canción actual
 
   const handleEditClick = () => {
@@ -139,6 +143,31 @@ function MainContent({
 
   };
 
+  const handleAddSoPlClick = async(idPlay) => {
+
+    try {
+      const result = await ADDSONGPLAY(idPlay, Idsong);
+
+      if(result.status){
+
+        setMSJ(result.message)
+        handleMSJClick();
+
+      }else{
+        setMSJ(result.message)
+        handleMSJClick();
+      }
+     
+    } catch (error) {
+      alert('No se logro conectarse');
+    } 
+
+    setShowModal(false);
+
+  };
+
+
+
   const handleCancelClick = () => {
     setIsEditing(false);
     setName(user.name);
@@ -204,6 +233,12 @@ function MainContent({
   const handleSongsClick = () => {
     console.log();
     setActCancion(SongsPlaylists);
+  };
+
+  const handleNewPlaylistClick = (IdCan) => {
+    setIdsong(IdCan);
+    UpdatePlaylist();
+    setShowModal(true);
   };
 
 
@@ -382,23 +417,47 @@ function MainContent({
                     <strong>{Cancion.name}</strong>
                   </p>
                   <p>{Cancion.artist}</p>
-                  <button
-                    onClick={() => handleSongClick(Cancion)}
-                    className="play-button"
-                  >
-                    ▶️
-                  </button>
-                  <button
-                    onClick={() => handleSongClick(Cancion)}
-                    className="play-like"
-                  >
-                    ❤️
-                  </button>
+                  <div className="play-buttons-container">
+                    <button
+                      onClick={() => handleSongClick(Cancion)}
+                      className="play-button"
+                    >
+                      ▶️
+                    </button>
+                    <button
+                      onClick={() => handleLikeClick(Cancion.id)}
+                      className="like-button"
+                    >
+                      ❤️
+                    </button>
+                    <button
+                      onClick={() => handleNewPlaylistClick(Cancion.id)}
+                      className="addPlaylist-button"
+                    >
+                      ➕
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </>
+      )}
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+          <div className="playlist-section">
+          {Playlists.map((playlist, index) => (
+            <div key={index} className="playlist-item" onClick={() => handleAddSoPlClick(playlist.id)}>
+              <img src={playlist.cover} alt={playlist.name} className="playlist-image"/>
+              <div className="playlist-details">
+                <p>{playlist.name}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+          </div>
+        </div>
       )}
        <div className="playlist-view">
       {/* El mensaje que aparecerá y desaparecerá */}

@@ -13,6 +13,7 @@ export const ENDPOINTS = {
   ADD_FAVORITE: '/user/favorite/addFavorite',
   SONGS_FAVORITE: '/user/favorite/',
   DEL_SONGPLAY: '/user/playlist/deleteSong/',
-  DEL_SONGFAVORITE: '/user/favorite/removeFavorite/'
+  DEL_SONGFAVORITE: '/user/favorite/removeFavorite/',
+  ADD_SONGPLAY: '/user/playlist/addSong'
 
 };
