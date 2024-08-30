@@ -4,16 +4,12 @@ export function middleware(req) {
   const { pathname } = req.nextUrl;
   const user = req.cookies.get('user');
 
-  if (user && pathname === '/register') {
+  if (user && (pathname === '/login' || pathname === '/register')) {
     return NextResponse.redirect(new URL('/home', req.url));
   }
 
-  if (!user && pathname !== '/login') {
+  if (!user && pathname !== '/login' && pathname !== '/register') {
     return NextResponse.redirect(new URL('/login', req.url));
-  }
-
-  if (user && pathname === '/login') {
-    return NextResponse.redirect(new URL('/home', req.url));
   }
 
   if (user && pathname === '/') {
