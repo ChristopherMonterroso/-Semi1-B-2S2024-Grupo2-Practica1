@@ -22,7 +22,7 @@ function MainContent({
   Playlists
 }) {
   let userString = localStorage.getItem("user");
-  let user = JSON.parse(userString);
+  let user = JSON.parse(userString) || {};
 
   const [showModal, setShowModal] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
@@ -233,6 +233,10 @@ function MainContent({
   const handleSongsClick = () => {
     console.log();
     setActCancion(SongsPlaylists);
+  };
+
+  const handleCancel = () => {
+    setShowModal(false);
   };
 
   const handleNewPlaylistClick = (IdCan) => {
@@ -446,7 +450,7 @@ function MainContent({
       {showModal && (
         <div className="modal">
           <div className="modal-content">
-          <div className="playlist-section">
+          <div className="ADDplaylist-section">
           {Playlists.map((playlist, index) => (
             <div key={index} className="playlist-item" onClick={() => handleAddSoPlClick(playlist.id)}>
               <img src={playlist.cover} alt={playlist.name} className="playlist-image"/>
@@ -456,6 +460,7 @@ function MainContent({
             </div>
           ))}
         </div>
+        <button className="button-cancelar" onClick={handleCancel}>Cancelar</button>
           </div>
         </div>
       )}

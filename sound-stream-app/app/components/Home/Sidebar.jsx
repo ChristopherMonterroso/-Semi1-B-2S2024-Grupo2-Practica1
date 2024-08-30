@@ -5,7 +5,7 @@ import { NEW_PLAYLIST } from '../../services/NewPlaylist';
 import './Sidebar.css'; // Archivo de estilos
 
 
-function Sidebar({setPerfil, Playlists, UpdatePlaylist, user, UpdateCanciones, setActPlaylists, SongPlaylist}) {
+function Sidebar({handleRadioClick, setPerfil, Playlists, UpdatePlaylist, user, UpdateCanciones, setActPlaylists, SongPlaylist}) {
 
   const [showPlaylists, setShowPlaylists] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -100,6 +100,7 @@ function Sidebar({setPerfil, Playlists, UpdatePlaylist, user, UpdateCanciones, s
       </div>
       <ul>
         <li onClick={handleInicioClick}>Inicio</li>
+        <li onClick={handleRadioClick}>Radio</li>
         <div className="playlist-header">
           <li onClick={handlePlaylistToggle}>Playlist</li>
           <button onClick={handleNewPlaylistClick} className="new-playlist-btn">➕</button>
@@ -145,8 +146,8 @@ function Sidebar({setPerfil, Playlists, UpdatePlaylist, user, UpdateCanciones, s
               accept="image/*"
               onChange={(e) => setCove(e.target.files[0])}
             />
-            <button onClick={handleCreatePlaylist}>Crear</button>
-            <button onClick={handleCancel}>Cancelar</button>
+            <button className='button-crear' onClick={handleCreatePlaylist}>Crear</button>
+            <button className='button-cancelar' onClick={handleCancel}>Cancelar</button>
           </div>
         </div>
       )}

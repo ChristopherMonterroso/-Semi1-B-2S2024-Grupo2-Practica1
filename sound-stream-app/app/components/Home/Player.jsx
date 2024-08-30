@@ -7,6 +7,10 @@ function Player({ActCancion}) {
   const [duration, setDuration] = useState(0);
   const audioRef = useRef(null);
 
+  useEffect(() => {
+    setCurrentSongIndex(0);
+  }, [ActCancion]);
+
   // Verificar que haya canciones antes de intentar acceder a una
   const cancion = ActCancion.length > 0 ? ActCancion[currentSongIndex] : null;
 
@@ -17,11 +21,13 @@ function Player({ActCancion}) {
       audioRef.current.load();
 
       const handleLoadedMetadata = () => {
-        setDuration(audioRef.current.duration);
+        setDuration(audioRef.current ? audioRef.current.duration : 0);
       };
 
       const handleTimeUpdate = () => {
-        setCurrentTime(audioRef.current.currentTime);
+        if (audioRef.current) {
+          setCurrentTime(audioRef.current.currentTime);
+        }
       };
 
       const handleEnded = () => {
@@ -36,10 +42,12 @@ function Player({ActCancion}) {
 
       // Limpiar eventos cuando se desmonta el componente
       return () => {
-        audioRef.current.removeEventListener('loadedmetadata', handleLoadedMetadata);
-        audioRef.current.removeEventListener('timeupdate', handleTimeUpdate);
-        audioRef.current.removeEventListener('ended', handleEnded);
-      };
+        if (audioRef.current) { // Verificación adicional
+          audioRef.current.removeEventListener('loadedmetadata', handleLoadedMetadata);
+          audioRef.current.removeEventListener('timeupdate', handleTimeUpdate);
+          audioRef.current.removeEventListener('ended', handleEnded);
+        }
+       };
     }
   }, [cancion]);
 

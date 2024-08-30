@@ -20,8 +20,8 @@ function App() {
     const [Canciones, setCanciones] = useState([]);
     const [ActCancion, setActCancion] = useState([]);
 
-    let userString = localStorage.getItem('user');
-    let user = JSON.parse(userString);
+    const userString = localStorage.getItem('user');
+    const user = JSON.parse(userString);
 
 
     useEffect(() => {
@@ -116,6 +116,22 @@ function App() {
 
     
 };
+
+
+const handleRadioClick = () => {
+  UpdateCanciones();
+
+  const shuffledCanciones = [...Canciones];
+
+  for (let i = shuffledCanciones.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledCanciones[i], shuffledCanciones[j]] = [shuffledCanciones[j], shuffledCanciones[i]];
+  }
+
+  setActCancion(shuffledCanciones);
+
+};
+
     
 
 
@@ -131,7 +147,7 @@ function App() {
     <div className="app">
     <Navbar setShowPlaylist={setShowPlaylist} UpdateCanciones= {UpdateCanciones} Canciones={Canciones} setCanciones={setCanciones} handleInicioClick={handleInicioClick}/> 
       <div className="main">
-        <Sidebar Playlists={Playlists}  setPerfil={setPerfil} UpdatePlaylist={UpdatePlaylist} user={user.id} UpdateCanciones={UpdateCanciones}  setActPlaylists={setActPlaylists}  SongPlaylist={SongPlaylist}/>
+        <Sidebar handleRadioClick={handleRadioClick} Playlists={Playlists}  setPerfil={setPerfil} UpdatePlaylist={UpdatePlaylist} user={user.id} UpdateCanciones={UpdateCanciones}  setActPlaylists={setActPlaylists}  SongPlaylist={SongPlaylist}/>
         <MainContent Playlists={Playlists} UpdateCanciones= {UpdateCanciones} UpdatePlaylist={UpdatePlaylist} SongPlaylist={SongPlaylist} Perfil={Perfil} Canciones={Canciones} setActCancion={setActCancion} ShowPlaylist={ShowPlaylist} SongsPlaylists={SongsPlaylists} ActPlaylists={ActPlaylists}/>
       </div>
  

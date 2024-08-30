@@ -41,7 +41,8 @@
   }
 
   .button-save,
-  .button-editar{
+  .button-editar,
+  .button-crear{
     padding: 5px 10px;
     font-size: 16px;
     border-radius: 0 4px 4px 0;
@@ -275,3 +276,11 @@
 .message-hidden {
   opacity: 0;
 }
+
+.ADDplaylist-section {
+  margin-top: 20px;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+
