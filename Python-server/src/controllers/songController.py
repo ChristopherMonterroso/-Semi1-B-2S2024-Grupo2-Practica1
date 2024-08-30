@@ -37,9 +37,9 @@ def createSong():
         db: Session = next(get_db())
 
         # Verificar si la canción ya existe
-        existing_song = db.query(Song).filter_by(name=name).first()
+        existing_song = db.query(Song).filter_by(name=name, artist=artist).first()
         if existing_song:
-            return jsonify({"message": "Song already exists", "status": False}), 400
+            return jsonify({"message": "Song by this artist already exists", "status": False}), 400
 
         # Subir la foto a S3
         photo_filename = f"Fotos/SC_{datetime.now().timestamp()}_{secure_filename(photo.filename)}"

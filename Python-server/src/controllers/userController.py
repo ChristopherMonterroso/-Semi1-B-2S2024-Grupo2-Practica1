@@ -150,9 +150,9 @@ def updateUser(id):
 
 def authenticateUser():
     try:
-        # Obtener los datos del formulario
-        email = request.form.get('email')
-        password = request.form.get('password')
+        # Obtener los datos con json
+        email = request.json.get('email')
+        password = request.json.get('password')
 
         if not email or not password:
             return jsonify({"message": "Email and password are required", "status": False}), 400
