@@ -1,0 +1,286 @@
+.main-content {
+    padding: 20px;
+    color: white;
+    background-color: #121212;
+    flex: 1;
+  }
+  
+  .album-section {
+    margin-top: 20px;
+  }
+  
+
+  
+  .albums img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+
+  .profile-pic img{
+    width: 180px; /* Ajusta el tamaño del ícono aquí */
+    height: 180px;
+
+  }
+
+
+  .profile-info input {
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 4px 0 0 4px;
+    border: 1px solid #ccc;
+    max-width: 300px; /* Ajusta el ancho máximo del input */
+    width: 100%; 
+  }
+
+  .buttons {
+    display: flex;
+    gap: 40px; 
+  }
+
+  .button-save,
+  .button-editar,
+  .button-crear{
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 0 4px 4px 0;
+    border: 1px solid #ccc;
+    background-color: #916bbf;
+    color: white;
+    cursor: pointer;
+  }
+
+  .button-cancelar{
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 0 4px 4px 0;
+    border: 1px solid #ccc;
+    background-color: #8b0000;
+    color: white;
+    cursor: pointer;
+  }
+
+  .profile-info div {
+    margin-bottom: 10px; /* Espacio entre cada div */
+  }
+
+  .profile-info label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Espacio entre el label y el input */
+    margin-bottom: 5px; /* Espacio adicional entre el label y el input */
+  }
+
+  .album-section {
+    margin-top: 20px;
+  }
+  
+  .albums {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columnas por fila */
+    gap: 20px;
+    overflow-y: auto; /* Habilitar scroll vertical */
+    max-height: 58vh; /* Limitar la altura máxima para que el scroll aparezca cuando se supere */
+    padding-right: 10px; /* Agregar padding para evitar que el contenido se solape con el scroll */
+  }
+  
+  .album {
+    background-color: #181818;
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    position: relative; /* Para posicionar el botón de play sobre la imagen */
+  }
+  
+  .album img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .album p {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+
+  .play-buttons-container {
+    display: flex;
+    gap: 10px; 
+    justify-content: center; 
+    margin-top: 20px; 
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .play-button, .like-button, .addPlaylist-button {
+    
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .album:hover .play-button {
+    opacity: 1;
+  }
+  
+  .album:hover .addPlaylist-button {
+    opacity: 1;
+  }
+ 
+  .album:hover .like-button {
+    opacity: 1;
+  }
+  
+  .play-button::before {
+    font-size: 24px;
+  }
+
+  .like-button::before {
+    font-size: 24px;
+  }
+
+  .addPlaylist-button::before {
+    font-size: 24px;
+  }
+
+
+.playlist-view1 {
+  padding: 20px;
+  color: white;
+}
+
+.playlist-info1 {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.playlist-image1 {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+
+.playlist-image-container {
+  flex-shrink: 0; /* Para que la imagen no se reduzca */
+}
+.playlist-text1 {
+  display: flex;
+  flex-direction: column; /* Coloca el h1 arriba y el p abajo */
+}
+
+
+.playlist-text1 h1 {
+  margin: 0; /* Elimina el margen para alinearlo mejor */
+}
+
+.playlist-text1 p {
+  margin-top: 5px; /* Espaciado entre h1 y p */
+}
+
+
+
+.song-item {
+  display: grid;
+  grid-template-columns: 40px 1.5fr 1fr 1fr 80px 40px;
+  align-items: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  overflow-y: auto;
+}
+
+.song-index, .song-header-index{
+  text-align: center;
+}
+
+.play-icon, .icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.5em;
+  color: white;
+}
+
+.song-info, .song-header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.song-thumbnail {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.song-title {
+  font-weight: bold;
+  display: block;
+}
+
+.song-artist {
+  font-size: 0.9em;
+  color: #aaa;
+}
+
+.butto-like, .butto-delete, .song-duration, .song-options, .song-header-duration, .song-header-album, .song-header-date-added {
+  text-align: center;
+}
+
+
+.title-items {
+  display: grid;
+  grid-template-columns: 40px 1.5fr 1fr 1fr 80px 40px;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #333;
+  color: #ccc; /* Color similar al de la imagen */
+}
+
+
+.message {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.message-hidden {
+  opacity: 0;
+}
+
+.ADDplaylist-section {
+  margin-top: 20px;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+

@@ -1,0 +1,65 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #1c1c1c;
+    color: white;
+  }
+  
+  .navbar-left {
+    flex: 1;
+  }
+  
+  .profile-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .profile-icon img {
+    width: 32px; /* Ajusta el tamaño del ícono aquí */
+    height: 32px;
+  }
+  
+  .navbar-center {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .search-input {
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 4px 0 0 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .search-button {
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 0 4px 4px 0;
+    border: 1px solid #ccc;
+    background-color: #916bbf;
+    color: white;
+    cursor: pointer;
+  }
+  
+
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    padding: 0 10px; /* Espaciado lateral */
+  }
+  
+  .navbar-right p {
+    cursor: pointer;
+    color: #007bff; /* Color de texto */
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .navbar-right p:hover {
+    text-decoration: underline; /* Subrayar al pasar el ratón */
+  }

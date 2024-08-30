@@ -6,6 +6,7 @@ import styles from './LoginForm.module.css';
 import Logo from '../logo/Logo';
 import SignupLink from './SignupLink';
 import { login } from '../../services/authService';
+import Cookies from 'js-cookie';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -24,7 +25,8 @@ const LoginForm = () => {
       if (result.status) {
         console.log('Login successful:', result);
         localStorage.setItem('user', JSON.stringify(result.user));
-        router.push('/');
+        Cookies.set('user', JSON.stringify(result.user), { expires: 1 });
+        router.push('/home');
       } else {
         setError(`Ocurrio un error. ${result.message}`);
       }
