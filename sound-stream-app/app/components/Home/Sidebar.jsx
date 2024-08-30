@@ -83,9 +83,10 @@ function Sidebar({setPerfil, Playlists, UpdatePlaylist, user, UpdateCanciones, s
     } 
 
 
-
+    
     // Aquí podrías hacer una solicitud para guardar la nueva playlist
     setShowModal(false);
+    UpdatePlaylist();
   };
 
   const handleCancel = () => {

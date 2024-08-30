@@ -72,6 +72,7 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .modal-content {
@@ -80,6 +81,7 @@ li {
   border-radius: 5px;
   width: 300px;
   text-align: center;
+  z-index: 1001;
 }
 
 .modal-content input,

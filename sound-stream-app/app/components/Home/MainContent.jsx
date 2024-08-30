@@ -2,6 +2,8 @@ import { React, useState } from "react";
 import { EDIT_USER } from "../../services/EditPerfil";
 import { ADDFAVORITE } from "../../services/LikeFavorite";
 import { DEL_SONGPLAYLIST } from "../../services/DelSongPlay";
+import { DEL_PLAYLIST } from "../../services/DelPLaylist";
+import { DEL_SONGFAVORITE } from "../../services/DelSongFav";
 import { login } from "../../services/authService";
 
 import "./MainContent.css";
@@ -13,6 +15,9 @@ function MainContent({
   ShowPlaylist,
   ActPlaylists,
   SongsPlaylists,
+  SongPlaylist,
+  UpdateCanciones,
+  UpdatePlaylist
 }) {
   let userString = localStorage.getItem("user");
   let user = JSON.parse(userString);
@@ -41,6 +46,27 @@ function MainContent({
 
   const handleDeleteClick = async(idDel) => {
 
+    if(ActPlaylists.id == -1){
+      try {
+        const result = await DEL_SONGFAVORITE(user.id, idDel);
+  
+        if(result.status){
+  
+          setMSJ(result.message)
+          handleMSJClick();
+  
+        }else{
+          setMSJ(result.message)
+          handleMSJClick();
+        }
+       
+      } catch (error) {
+        alert('No se logro conectarse');
+      } 
+
+    }else{
+
+
     try {
       const result = await DEL_SONGPLAYLIST(ActPlaylists.id, idDel);
 
@@ -57,8 +83,39 @@ function MainContent({
     } catch (error) {
       alert('No se logro conectarse');
     } 
+  }
+
+  SongPlaylist(ActPlaylists.id)
 
   };
+
+  const handleDeletePlayClick = async() => {
+
+    if(ActPlaylists.id == -1){
+      setMSJ("Favorite no se puede eliminar!!")
+        handleMSJClick();
+
+    }else{
+    try {
+      const result = await DEL_PLAYLIST(ActPlaylists.id);
+
+      if(result.status){
+
+        setMSJ(result.message)
+        handleMSJClick();
+        UpdatePlaylist();
+        UpdateCanciones();
+
+      }else{
+        setMSJ(result.message)
+        handleMSJClick();
+      }
+     
+    } catch (error) {
+      alert('No se logro conectarse');
+    } 
+  }
+};
 
 
   const handleLikeClick = async(idfav) => {
@@ -260,7 +317,7 @@ function MainContent({
             </div>
             <div className="playlist-buttons">
               <button  onClick={() => handleSongsClick()} className="play-icon">▶️</button>
-              <button className="icon-btn">🗑️</button>
+              <button onClick={() => handleDeletePlayClick()} className="icon-btn">🗑️</button>
             </div>
             <div className="title-items">
                 <div className="song-header-index">
@@ -301,7 +358,7 @@ function MainContent({
                   <button onClick={() => handleLikeClick(Cancion.id)} className="icon-btn">❤️</button>
                 </div>
                 <div className="butto-like">
-                  <button className="icon-btn">🗑️</button>
+                  <button onClick={() => handleDeleteClick(Cancion.id)} className="icon-btn">🗑️</button>
                 </div>
               </div>
               ))}

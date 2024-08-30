@@ -1,3 +1,5 @@
+import { DEL_SONGFAVORITE } from "./DelSongFav";
+
 export const API_BASE_URL = 'http://localhost:5000/api';
 
 export const ENDPOINTS = {
@@ -10,6 +12,7 @@ export const ENDPOINTS = {
   NEW_PLAYLIST: '/user/playlist/',
   ADD_FAVORITE: '/user/favorite/addFavorite',
   SONGS_FAVORITE: '/user/favorite/',
-  DEL_SONGPLAY: '/user/playlist/deleteSong/'
+  DEL_SONGPLAY: '/user/playlist/deleteSong/',
+  DEL_SONGFAVORITE: '/user/favorite/removeFavorite/'
 
 };

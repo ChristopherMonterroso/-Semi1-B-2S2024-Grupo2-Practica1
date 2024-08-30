@@ -132,10 +132,10 @@ function App() {
     <Navbar handleInicioClick={handleInicioClick}/> 
       <div className="main">
         <Sidebar Playlists={Playlists}  setPerfil={setPerfil} UpdatePlaylist={UpdatePlaylist} user={user.id} UpdateCanciones={UpdateCanciones}  setActPlaylists={setActPlaylists}  SongPlaylist={SongPlaylist}/>
-        <MainContent Perfil={Perfil} Canciones={Canciones} setActCancion={setActCancion} ShowPlaylist={ShowPlaylist} SongsPlaylists={SongsPlaylists} ActPlaylists={ActPlaylists}/>
+        <MainContent UpdateCanciones= {UpdateCanciones} UpdatePlaylist={UpdatePlaylist} SongPlaylist={SongPlaylist} Perfil={Perfil} Canciones={Canciones} setActCancion={setActCancion} ShowPlaylist={ShowPlaylist} SongsPlaylists={SongsPlaylists} ActPlaylists={ActPlaylists}/>
       </div>
  
-      <Player ActCancion={ActCancion} />
+      <Player  ActCancion={ActCancion} />
     </div>
   );
 }
