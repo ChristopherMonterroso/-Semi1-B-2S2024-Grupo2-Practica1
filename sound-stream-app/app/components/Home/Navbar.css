@@ -46,3 +46,20 @@
     cursor: pointer;
   }
   
+
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    padding: 0 10px; /* Espaciado lateral */
+  }
+  
+  .navbar-right p {
+    cursor: pointer;
+    color: #007bff; /* Color de texto */
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .navbar-right p:hover {
+    text-decoration: underline; /* Subrayar al pasar el ratón */
+  }

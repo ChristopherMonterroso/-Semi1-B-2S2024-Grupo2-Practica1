@@ -32,6 +32,11 @@ function Navbar({ setShowPlaylist, Canciones, setCanciones , UpdateCanciones}) {
 
   };
 
+  const handleSignout = () => {
+    router.push('/login');
+
+  };
+
 
   
 
@@ -44,6 +49,10 @@ function Navbar({ setShowPlaylist, Canciones, setCanciones , UpdateCanciones}) {
       </div>
       <div className="navbar-center">
         <input onChange={handleInputChange} type="text" placeholder="Buscar..." className="search-input" />
+      </div>
+      <div className="navbar-right">
+        <i className="fa fa-sign-out-alt" aria-hidden="true"></i>
+        <p onClick={handleSignout}>Sign out</p>
       </div>
     </div>
   );
