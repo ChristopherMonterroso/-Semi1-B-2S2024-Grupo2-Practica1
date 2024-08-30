@@ -10,14 +10,22 @@
   margin-bottom: 20px;
 }
 
+.sidebar .icon {
+  width: 24px; /* Ajusta el tamaño del icono */
+  height: 24px;
+  margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+
 ul {
   list-style: none;
   padding: 0;
 }
 
 li {
+  display: flex;
+  align-items: center; /* Alinea verticalmente los elementos */
+  padding: 10px;
   cursor: pointer;
-  margin: 10px 0;
 }
 
 .playlist-section {

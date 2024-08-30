@@ -99,10 +99,16 @@ function Sidebar({handleRadioClick, setPerfil, Playlists, UpdatePlaylist, user, 
         <img src="logo.png" alt="Logo" />
       </div>
       <ul>
-        <li onClick={handleInicioClick}>Inicio</li>
-        <li onClick={handleRadioClick}>Radio</li>
+        <li onClick={handleInicioClick}>
+        <img src="casa.png" alt="Home Icon" className="icon" />
+        Inicio</li>
+        <li onClick={handleRadioClick}>
+        <img src="radio.png" alt="Radio Icon" className="icon" />
+        Radio</li>
         <div className="playlist-header">
-          <li onClick={handlePlaylistToggle}>Playlist</li>
+          <li onClick={handlePlaylistToggle}>
+          <img src="playlist.png" alt="Playlist Icon" className="icon" />
+          Playlist</li>
           <button onClick={handleNewPlaylistClick} className="new-playlist-btn">➕</button>
         </div>
       </ul>
