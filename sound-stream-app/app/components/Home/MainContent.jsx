@@ -421,6 +421,7 @@ function MainContent({
                     <strong>{Cancion.name}</strong>
                   </p>
                   <p>{Cancion.artist}</p>
+                  <p>{Cancion.duration}</p>
                   <div className="play-buttons-container">
                     <button
                       onClick={() => handleSongClick(Cancion)}
