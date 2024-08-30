@@ -388,6 +388,12 @@ function MainContent({
                   >
                     ▶️
                   </button>
+                  <button
+                    onClick={() => handleSongClick(Cancion)}
+                    className="play-like"
+                  >
+                    ❤️
+                  </button>
                 </div>
               ))}
             </div>
