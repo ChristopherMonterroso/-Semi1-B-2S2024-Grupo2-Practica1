@@ -1,9 +1,12 @@
 import {React, useState} from 'react';
+import { useRouter } from 'next/router';
 import './Navbar.css'; // Asegúrate de crear un archivo CSS para los estilos
 
-function Navbar({ handleInicioClick, setShowPlaylist, Canciones, setCanciones , UpdateCanciones}) {
+function Navbar({ setShowPlaylist, Canciones, setCanciones , UpdateCanciones}) {
 
- 
+  const router = useRouter(); 
+
+
   const handleInputChange = (event) => {
     const value = event.target.value;
 
@@ -24,6 +27,10 @@ function Navbar({ handleInicioClick, setShowPlaylist, Canciones, setCanciones , 
    
   };
 
+  const handleInicioClick = () => {
+    router.push('/profile');
+
+  };
 
 
   

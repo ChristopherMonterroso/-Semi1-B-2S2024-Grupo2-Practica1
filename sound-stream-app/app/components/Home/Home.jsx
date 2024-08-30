@@ -145,7 +145,7 @@ const handleRadioClick = () => {
 
   return (
     <div className="app">
-    <Navbar setShowPlaylist={setShowPlaylist} UpdateCanciones= {UpdateCanciones} Canciones={Canciones} setCanciones={setCanciones} handleInicioClick={handleInicioClick}/> 
+    <Navbar setShowPlaylist={setShowPlaylist} UpdateCanciones= {UpdateCanciones} Canciones={Canciones} setCanciones={setCanciones} /> 
       <div className="main">
         <Sidebar handleRadioClick={handleRadioClick} Playlists={Playlists}  setPerfil={setPerfil} UpdatePlaylist={UpdatePlaylist} user={user.id} UpdateCanciones={UpdateCanciones}  setActPlaylists={setActPlaylists}  SongPlaylist={SongPlaylist}/>
         <MainContent Playlists={Playlists} UpdateCanciones= {UpdateCanciones} UpdatePlaylist={UpdatePlaylist} SongPlaylist={SongPlaylist} Perfil={Perfil} Canciones={Canciones} setActCancion={setActCancion} ShowPlaylist={ShowPlaylist} SongsPlaylists={SongsPlaylists} ActPlaylists={ActPlaylists}/>
