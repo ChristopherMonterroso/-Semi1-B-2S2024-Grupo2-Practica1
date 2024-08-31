@@ -1,11 +1,12 @@
 .adminContainer {
     padding: 20px;
-    background-color: #dacaef;
+    background-color: #000;
     min-height: 100vh;
+    color: #fff;
   }
   
   .createButton {
-    background-color: #0070f3;
+    background-color: #916bbf;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -22,7 +23,7 @@
   .songItem {
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: #000;
     margin-bottom: 15px;
     padding: 10px;
     border-radius: 5px;
@@ -49,7 +50,7 @@
   
   .editButton,
   .deleteButton {
-    background-color: #0070f3;
+    background-color: #916bbf;
     color: white;
     border: none;
     padding: 5px 10px;

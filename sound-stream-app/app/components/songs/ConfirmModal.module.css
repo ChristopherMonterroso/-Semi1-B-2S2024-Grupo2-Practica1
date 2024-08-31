@@ -12,6 +12,7 @@
   
   .modalContent {
     background: #fff;
+    color: #000;
     padding: 20px;
     border-radius: 8px;
     text-align: center;
@@ -24,7 +25,7 @@
   }
   
   .confirmButton, .cancelButton {
-    background: #0070f3;
+    background: #916bbf;
     color: #fff;
     border: none;
     padding: 10px 20px;
