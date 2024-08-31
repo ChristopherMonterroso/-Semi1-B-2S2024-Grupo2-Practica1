@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React, useState, useEffect} from 'react';
 import { useRouter } from 'next/router';
 import { NEW_PLAYLIST } from '../../services/NewPlaylist';
 
@@ -12,8 +12,17 @@ function Sidebar({handleRadioClick, setPerfil, Playlists, UpdatePlaylist, user, 
   const [name, setName] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [cove, setCove] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
  
   const router = useRouter(); 
+  
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      setIsAdmin(parsedUser.rol === 'Admin');
+    }
+  }, []);
 
   const handleInicioClick = () => {
     console.log("home")
@@ -47,7 +56,9 @@ function Sidebar({handleRadioClick, setPerfil, Playlists, UpdatePlaylist, user, 
     setShowModal(true);
   };
 
-
+  const handleAdminClick = () => {
+    router.push('/admin');
+  }
 
 
   const handleCreatePlaylist = async() => {
@@ -111,6 +122,12 @@ function Sidebar({handleRadioClick, setPerfil, Playlists, UpdatePlaylist, user, 
           Playlist</li>
           <button onClick={handleNewPlaylistClick} className="new-playlist-btn">➕</button>
         </div>
+        {isAdmin && (
+          <li onClick={handleAdminClick}>
+            <img src="admin.png" alt="Administrador" className="icon" />
+            Administrador
+          </li>
+        )}
       </ul>
       {showPlaylists && ( // Renderizar la sección de playlists solo si showPlaylists es true
         <div className="playlist-section">
