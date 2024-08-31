@@ -1,6 +1,6 @@
 import { DEL_SONGFAVORITE } from "./DelSongFav";
 
-export const API_BASE_URL = 'http://localhost:5000/api';
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export const ENDPOINTS = {
   LOGIN: '/users/authenticate',
