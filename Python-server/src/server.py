@@ -30,4 +30,4 @@ def home():
     return jsonify({'message': 'Hello World'}) 
 
 if __name__ == '__main__':
-    server.run(debug=True, port=PORT)
+    server.run(host= '0.0.0.0',debug=True, port=PORT)
