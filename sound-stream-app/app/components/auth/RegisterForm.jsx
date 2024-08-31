@@ -11,16 +11,30 @@ const RegisterForm = () => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [birthdate, setBirthdate] = useState('');
   const [profilePhoto, setProfilePhoto] = useState(null);
+  const [preview, setPreview] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter(); 
+
+  const handlePhotoChange = (event) => {
+    const file = event.target.files[0];
+    setProfilePhoto(file);
+    setPreview(URL.createObjectURL(file));
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
     setError(null);
+
+    if (password !== confirmPassword) {
+      setError('Las contraseñas no coinciden.');
+      setLoading(false);
+      return;
+    }
 
     try {
       const result = await registerUser(name, lastName, email, password, birthdate, profilePhoto);
@@ -89,6 +103,17 @@ const RegisterForm = () => {
         <div className={styles.formGroup}>
           <input
             className={styles.input}
+            type="password"
+            id="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+            placeholder='Confirmar Contraseña'
+          />
+        </div>
+        <div className={styles.formGroup}>
+          <input
+            className={styles.input}
             type="date"
             id="birthdate"
             value={birthdate}
@@ -102,10 +127,20 @@ const RegisterForm = () => {
             className={styles.input}
             type="file"
             id="profilePhoto"
-            onChange={(e) => setProfilePhoto(e.target.files[0])}
+            accept="image/*"
+            onChange={handlePhotoChange}
             required
           />
         </div>
+        {preview && (
+          <div className={styles.previewContainer}>
+            <img
+              src={preview}
+              alt="Vista previa de la imagen"
+              className={styles.previewImage}
+            />
+          </div>
+        )}
         <button type="submit" className={styles.button} disabled={loading}>
           {loading ? 'Registrando...' : 'Registrarse'}
         </button>

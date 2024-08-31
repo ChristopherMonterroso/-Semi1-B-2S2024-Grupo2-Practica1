@@ -9,8 +9,15 @@ const AdminPage = () => {
     router.push('/admin/songs');
   };
 
+  const handleGoHome = () => {
+    router.push('/home');
+  };
+
   return (
     <div className={styles.adminContainer}>
+      <button className={styles.goHomeButton} onClick={handleGoHome}>
+        Regresar a Home
+      </button>
       <h1>Panel de administración</h1>
       <p>Seleccione una categoría para gestionar:</p>
       <button className={styles.categoryButton} onClick={handleCategoryClick}>

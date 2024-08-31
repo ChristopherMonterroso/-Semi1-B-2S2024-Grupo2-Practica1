@@ -1,68 +1,89 @@
 .adminContainer {
-    padding: 20px;
-    background-color: #dacaef;
-    min-height: 100vh;
-  }
-  
-  .createButton {
-    background-color: #0070f3;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 20px;
-  }
-  
-  .songList {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .songItem {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    margin-bottom: 15px;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .songImage {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    margin-right: 15px;
-  }
-  
-  .songDetails {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .songActions {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .editButton,
-  .deleteButton {
-    background-color: #0070f3;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  .deleteButton {
-    background-color: #ff4d4d;
-  }
-  
-  .title {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
+  padding: 20px;
+  background-color: #000;
+  min-height: 100vh;
+  color: #fff;
+  position: relative;
+}
+
+.goHomeButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 150px;
+  height: 40px;
+  background-color: #7f5aaa;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.goHomeButton:hover {
+  background-color: #6a4b8a;
+}
+
+.createButton {
+  background-color: #916bbf;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.songList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.songItem {
+  display: flex;
+  align-items: center;
+  background-color: #000;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 2px solid #916bbf;
+}
+
+.songImage {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.songDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.songActions {
+  display: flex;
+  gap: 10px;
+}
+
+.editButton,
+.deleteButton {
+  background-color: #916bbf;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.deleteButton {
+  background-color: #ff4d4d;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
