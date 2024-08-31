@@ -53,8 +53,15 @@ const SongsPage = () => {
     setSongToDelete(null);
   };
 
+  const handleGoHome = () => {
+    router.push('/home');
+  };
+
   return (
     <div className={styles.adminContainer}>
+      <button className={styles.goHomeButton} onClick={handleGoHome}>
+        Regresar a Home
+      </button>
       <h1 className={styles.title}>Gestión de canciones</h1>
       <button className={styles.createButton} onClick={handleCreateNewSong}>
         Crear nueva canción
