@@ -52,3 +52,18 @@
   color: rgb(219, 49, 49);
   margin-top: 10px;
 }
+
+.previewContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+  
+.previewImage {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
