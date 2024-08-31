@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { getSongs, deleteSong } from '../../../app/services/songsService';
 import ConfirmModal from '../../../app/components/songs/ConfirmModal';
 import styles from '../../../styles/SongsPage.module.css';
-import '../../../app/globals.css'
+import '../../../app/globals.css';
 
 const SongsPage = () => {
   const [songs, setSongs] = useState([]);
@@ -53,49 +53,52 @@ const SongsPage = () => {
     setSongToDelete(null);
   };
 
-  if (loading) return <p>Cargando canciones...</p>;
-
   return (
     <div className={styles.adminContainer}>
       <h1 className={styles.title}>Gestión de canciones</h1>
       <button className={styles.createButton} onClick={handleCreateNewSong}>
         Crear nueva canción
       </button>
-      <ul className={styles.songList}>
-        {Array.isArray(songs) && songs.length > 0 ? (
-          songs.map((song) => (
-            <li key={song.id} className={styles.songItem}>
-              <img src={song.photo} alt={song.name} className={styles.songImage} />
-              <div className={styles.songDetails}>
-                <p>Nombre: {song.name}</p>
-                <p>Artista: {song.artist}</p>
-                <p>Duración: {song.duration}</p>
-                <p>Fecha de Creación: {song.creationDate}</p>
-                <audio controls>
-                  <source src={song.mp3File} type="audio/mpeg" />
-                  Tu navegador no soporta el elemento de audio.
-                </audio>
-              </div>
-              <div className={styles.songActions}>
-                <button 
-                  className={styles.editButton} 
-                  onClick={() => handleEdit(song.id)}
-                >
-                  Editar
-                </button>
-                <button 
-                  className={styles.deleteButton} 
-                  onClick={() => openConfirmModal(song.id)}
-                >
-                  Eliminar
-                </button>
-              </div>
-            </li>
-          ))
-        ) : (
-          <p>No se encontraron canciones.</p>
-        )}
-      </ul>
+
+      {loading ? (
+        <p>Cargando canciones...</p>
+      ) : (
+        <ul className={styles.songList}>
+          {Array.isArray(songs) && songs.length > 0 ? (
+            songs.map((song) => (
+              <li key={song.id} className={styles.songItem}>
+                <img src={song.photo} alt={song.name} className={styles.songImage} />
+                <div className={styles.songDetails}>
+                  <p>Nombre: {song.name}</p>
+                  <p>Artista: {song.artist}</p>
+                  <p>Duración: {song.duration}</p>
+                  <p>Fecha de Creación: {song.creationDate}</p>
+                  <audio controls>
+                    <source src={song.mp3File} type="audio/mpeg" />
+                    Tu navegador no soporta el elemento de audio.
+                  </audio>
+                </div>
+                <div className={styles.songActions}>
+                  <button 
+                    className={styles.editButton} 
+                    onClick={() => handleEdit(song.id)}
+                  >
+                    Editar
+                  </button>
+                  <button 
+                    className={styles.deleteButton} 
+                    onClick={() => openConfirmModal(song.id)}
+                  >
+                    Eliminar
+                  </button>
+                </div>
+              </li>
+            ))
+          ) : (
+            <p>No se encontraron canciones.</p>
+          )}
+        </ul>
+      )}
 
       {showConfirmModal && (
         <ConfirmModal
