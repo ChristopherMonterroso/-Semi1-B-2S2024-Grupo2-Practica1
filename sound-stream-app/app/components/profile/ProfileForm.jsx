@@ -4,6 +4,7 @@ import styles from './ProfileForm.module.css';
 import Modal from './Modal';
 import { updateUser } from '../../services/profileService';
 import { login } from '../../services/authService';
+import Cookies from 'js-cookie';
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
@@ -70,6 +71,7 @@ const ProfilePage = () => {
         const loginResult = await login(email, password);
         if (loginResult.status) {
           localStorage.setItem('user', JSON.stringify(loginResult.user));
+          Cookies.set('user', JSON.stringify(loginResult.user), { expires: 1 });
           router.reload();
         } else {
           setError(`Ocurrió un error al actualizar. ${loginResult.message}`);

@@ -14,18 +14,13 @@ const SongsPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-    if (!storedUser || storedUser.rol !== 'Admin') {
-      router.push('/');
-    } else {
-      const loadSongs = async () => {
-        const songsData = await getSongs();
-        setSongs(songsData.songs);
-        setLoading(false);
-      };
+    const loadSongs = async () => {
+      const songsData = await getSongs();
+      setSongs(songsData.songs);
+      setLoading(false);
+    };
 
-      loadSongs();
-    }
+    loadSongs();
   }, [router]);
 
   const handleDelete = async () => {
