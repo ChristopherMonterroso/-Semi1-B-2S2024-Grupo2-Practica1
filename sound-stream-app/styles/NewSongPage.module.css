@@ -1,6 +1,7 @@
 .createSongContainer {
     padding: 20px;
-    background-color: #dacaef;
+    background-color: #000;
+    color: #fff;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -58,7 +59,7 @@
   }
   
   .submitButton {
-    background-color: #0070f3;
+    background-color: #916bbf;
     color: white;
     padding: 10px 15px;
     border: none;
