@@ -1,26 +1,46 @@
 .adminContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px;
-    background-color: #000;
-    color: #fff;
-    min-height: 100vh;
-  }
-  
-  .categoryButton {
-    width: 100px;
-    height: 100px;
-    background-color: #916bbf;
-    color: #fff; 
-    border: none;
-    border-radius: 8px; 
-    cursor: pointer;
-    font-size: 16px; 
-    margin: 10px; 
-    transition: background-color 0.3s ease; 
-  }
-  
-  .categoryButton:hover {
-    background-color: #7f5aaa;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background-color: #000;
+  color: #fff;
+  min-height: 100vh;
+  position: relative;
+}
+
+.goHomeButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 150px;
+  height: 40px;
+  background-color: #7f5aaa;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.goHomeButton:hover {
+  background-color: #6a4b8a;
+}
+
+.categoryButton {
+  width: 100px;
+  height: 100px;
+  background-color: #916bbf;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.categoryButton:hover {
+  background-color: #7f5aaa;
+}
