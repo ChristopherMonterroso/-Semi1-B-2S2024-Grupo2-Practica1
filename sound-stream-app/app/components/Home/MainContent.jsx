@@ -6,7 +6,7 @@ import { DEL_PLAYLIST } from "../../services/DelPLaylist";
 import { DEL_SONGFAVORITE } from "../../services/DelSongFav";
 import { ADDSONGPLAY } from "../../services/AddSongPlay";
 import { login } from "../../services/authService";
-
+import Cookies from 'js-cookie';
 import "./MainContent.css";
 
 function MainContent({
@@ -21,8 +21,21 @@ function MainContent({
   UpdatePlaylist,
   Playlists
 }) {
-  let userString = localStorage.getItem("user");
-  let user = JSON.parse(userString) || {};
+  const userCookie = Cookies.get('user');
+  let user = {
+    id: -1
+  };
+  
+  if (userCookie) {
+    try {
+      user = JSON.parse(userCookie);
+    } catch (error) {
+      console.error("Error al parsear la cookie 'user':", error);
+    }
+  } else {
+    console.warn("No se encontró la cookie 'user'");
+  }
+  
 
   const [showModal, setShowModal] = useState(false);
   const [showMessage, setShowMessage] = useState(false);

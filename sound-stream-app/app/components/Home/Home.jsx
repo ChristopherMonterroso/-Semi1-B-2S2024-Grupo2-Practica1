@@ -8,6 +8,7 @@ import { LIST_SONGS } from '../../services/ListCanciones';
 import { LIST_SONGSPLAYLIST } from '../../services/SongPlayl';
 import { LIST_SONGSFAVORITES } from '../../services/SongFavorites';
 import './Home.css';
+import Cookies from 'js-cookie';
 
 
 function App() {
@@ -20,9 +21,20 @@ function App() {
     const [Canciones, setCanciones] = useState([]);
     const [ActCancion, setActCancion] = useState([]);
 
-    const userString = localStorage.getItem('user');
-    const user = JSON.parse(userString);
-
+    const userCookie = Cookies.get('user');
+    let user = {
+      id: -1
+    };
+    
+    if (userCookie) {
+      try {
+        user = JSON.parse(userCookie);
+      } catch (error) {
+        console.error("Error al parsear la cookie 'user':", error);
+      }
+    } else {
+      console.warn("No se encontró la cookie 'user'");
+    }
 
     useEffect(() => {
       // Esto se ejecutará una vez cuando el componente se monte (cargue o recargue la página)

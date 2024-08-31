@@ -1,6 +1,7 @@
 import {React, useState} from 'react';
 import { useRouter } from 'next/router';
 import './Navbar.css'; // Asegúrate de crear un archivo CSS para los estilos
+import Cookies from 'js-cookie';
 
 function Navbar({ setShowPlaylist, Canciones, setCanciones , UpdateCanciones}) {
 
@@ -33,6 +34,7 @@ function Navbar({ setShowPlaylist, Canciones, setCanciones , UpdateCanciones}) {
   };
 
   const handleSignout = () => {
+    Cookies.remove('user');
     router.push('/login');
 
   };
@@ -44,7 +46,7 @@ function Navbar({ setShowPlaylist, Canciones, setCanciones , UpdateCanciones}) {
     <div className="navbar">
       <div className="navbar-left">
         <button className="profile-icon" onClick={handleInicioClick}>
-          <img src="usuario.png" alt="Profile" />
+          <img src="Usuario.png" alt="Profile" />
         </button>
       </div>
       <div className="navbar-center">
