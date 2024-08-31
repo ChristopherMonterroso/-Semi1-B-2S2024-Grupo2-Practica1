@@ -35,6 +35,7 @@ function Navbar({ setShowPlaylist, Canciones, setCanciones , UpdateCanciones}) {
 
   const handleSignout = () => {
     Cookies.remove('user');
+    localStorage.removeItem('user');
     router.push('/login');
 
   };
