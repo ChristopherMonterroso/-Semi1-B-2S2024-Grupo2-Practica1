@@ -66,6 +66,9 @@ Cada usuario fue creado con políticas personalizadas para restringir su acceso 
 1. **Bucket para el Sitio Web Estático:**
    * **Captura:**
      * ![1725113725976](images/ManualTecnico/1725113725976.png)
+     * ![1725156706229](images/ManualTecnico/1725156706229.png)
+     * ![1725156543554](images/ManualTecnico/1725156543554.png)
+     * ![1725156608848](images/ManualTecnico/1725156608848.png)
    * **Descripción:**
      * Se creó un bucket llamado `sound-stream-semi1-b-g2`.
      * Se habilitó la opción de "Static Website Hosting" para alojar el sitio web estático.
@@ -83,6 +86,7 @@ Cada usuario fue creado con políticas personalizadas para restringir su acceso 
 1. **Instancias de EC2:**
    * **Captura:**
      * ![1725113676615](images/ManualTecnico/1725113676615.png)
+     * ![1725161141240](images/ManualTecnico/1725161141240.png)
    * **Descripción:**
      * Se crearon dos instancias de EC2, cada una ejecutando servidores en Node.js y Python.
      * Se eligió el sistema operativo basado en Linux (por ejemplo, Amazon Linux 2).
@@ -104,6 +108,8 @@ Cada usuario fue creado con políticas personalizadas para restringir su acceso 
 1. **Instancia de RDS:**
    * **Captura:**
      * ![1725113638904](images/ManualTecnico/1725113638904.png)
+     * ![1725161153985](images/ManualTecnico/1725161153985.png)
+     * ![1725161160698](images/ManualTecnico/1725161160698.png)
    * **Descripción:**
      * Se creó una instancia de RDS con el motor de base de datos que se prefiera (por ejemplo, MySQL, PostgreSQL).
      * Se configuraron parámetros como el tamaño de la instancia, la cantidad de almacenamiento asignado, y los ajustes de rendimiento.
