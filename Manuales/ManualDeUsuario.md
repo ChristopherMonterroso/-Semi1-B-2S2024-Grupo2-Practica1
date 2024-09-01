@@ -107,7 +107,7 @@ En la página de home, se tiene la parte visual de canciones, se tiene la parte 
 
 ---
 
-## 9. Pagina Home - playlist
+## 10. Pagina Home - playlist
 
 En la página de home, se tiene la parte visual de canciones, al seleccionar playlist se le abrira una parte visual donde se tienen todas las playlist incluida la de favoritos
 
@@ -115,3 +115,133 @@ En la página de home, se tiene la parte visual de canciones, al seleccionar pla
 ![Home](images/ManualDeUsuario/playlist.png)
 
 ---
+
+
+## 11. Pagina Home - playlist agregar
+
+En la parte de playslist al precionar el icono de mas se desplega una ventana que solicitara los datos para crear una nueva playlist
+
+![Home](images/ManualDeUsuario/newplasylist.png)
+
+---
+
+## 12. Pagina Home - Parte Visual reproductor
+
+En la parte de inferios de la pantalla se tiene la parte de reproductor, se tiene la imagen, nombre de cancion y el nombre del artista de la cancion, a su lado derecho tenemos 3 botones que nos serviran para interacutar con las canciones en cola y como parte final la barra de reproduccion de la musica como tambien la duracion de la cancion
+
+![Home](images/ManualDeUsuario/reproductor.png)
+
+---
+
+## 12. Pagina Home - Parte Visual Playlist
+
+En la parte tiene la vista la playlist que tendra la lista de sus canciones
+
+![Home](images/ManualDeUsuario/venlistplay.png)
+
+<table>
+  <tr>
+    <td style="vertical-align: middle; text-align: center;">
+      <img src="images/ManualDeUsuario/playicon.png" alt="Home" />
+    </td>
+    <td style="vertical-align: middle; text-align: left;">
+      <strong>Reproducir</strong> Al presionar se reproducirá la canción seleccionada o toda la lista si se selecciona la de la parte superior
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td style="vertical-align: middle; text-align: center;">
+      <img src="images/ManualDeUsuario/corazon.png" alt="Home" />
+    </td>
+    <td style="vertical-align: middle; text-align: left;">
+      <strong>Me gusta</strong> Al precionar se agregara a favortivos
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td style="vertical-align: middle; text-align: center;">
+      <img src="images/ManualDeUsuario/delete.png" alt="Home" />
+    </td>
+    <td style="vertical-align: middle; text-align: left;">
+      <strong>Eliminar</strong> Al precionar se eliminara la cancion selecionada en la playlist o si se selecciona la de la parte de superios se eliminara la playlist por completo
+    </td>
+  </tr>
+</table>
+
+---
+## 13. Pagina Home - Parte superior
+
+En la parte de superior de la pantalla se tiene el icono de usuario que al precionar nos dirigira a la parte de [perfil de usuario](#3-página-de-perfil-de-usuario)
+
+![Home](images/ManualDeUsuario/navbar.png)
+
+
+**Buscador** en esta parte al realizar una busqueda se nos estara dando una lista de canciones que coinciden con la busqueda
+
+
+![Home](images/ManualDeUsuario/busqueda.png)
+
+
+**sign out** se nos cerra sesion y nos dirigira a la [pagina de inicio de sesion](#1-página-de-inicio-de-sesión)
+
+---
+## 14. Pagina Home - Radio
+
+En la parte de opciones se tiene Radio, al precionarse estara reproduciendo toda las canciones en forma aleatroria, y se proda ver que cancion se reproduce en la [barra de reproduccion](#12-pagina-home---parte-visual-reproductor)
+
+![Home](images/ManualDeUsuario/radio.png)
+
+---
+## 14. Pagina Home - Cancion
+
+Al mover el cursor sobre una cancion tendremos tres opciones que cerran reproducir, me gusta y agregar
+
+![Home](images/ManualDeUsuario/cancion.png)
+
+<table>
+  <tr>
+    <td style="vertical-align: middle; text-align: center;">
+      <img src="images/ManualDeUsuario/play.png" alt="Home" />
+    </td>
+    <td style="vertical-align: middle; text-align: left;">
+      <strong>Reproducir</strong> Al presionar se reproducirá la canción seleccionada
+    </td>
+  </tr>
+</table>
+
+
+<table>
+  <tr>
+    <td style="vertical-align: middle; text-align: center;">
+      <img src="images/ManualDeUsuario/like.png" alt="Home" />
+    </td>
+    <td style="vertical-align: middle; text-align: left;">
+      <strong>Me gusta</strong> Al precionar se agregara a favortivos
+    </td>
+  </tr>
+</table>
+
+
+
+<table>
+  <tr>
+    <td style="vertical-align: middle; text-align: center;">
+      <img src="images/ManualDeUsuario/add.png" alt="Home" />
+    </td>
+    <td style="vertical-align: middle; text-align: left;">
+      <strong>Agregar</strong> Se desplegara la lista de playlist y al seleccionar una se estara agregando a la playlist seleccionada
+    </td>
+  </tr>
+</table>
+
+
+![Home](images/ManualDeUsuario/listplaylist.png)
+
+
+
+---
+
