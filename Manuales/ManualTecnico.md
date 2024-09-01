@@ -67,14 +67,13 @@ Cada usuario fue creado con políticas personalizadas para restringir su acceso 
    * **Captura:**
      * ![1725113725976](images/ManualTecnico/1725113725976.png)
    * **Descripción:**
-     * Se creó un bucket llamado `sound-stream-semi1-seccion-g#`.
+     * Se creó un bucket llamado `sound-stream-semi1-b-g2`.
      * Se habilitó la opción de "Static Website Hosting" para alojar el sitio web estático.
      * Los archivos HTML, CSS y JavaScript de la aplicación se subieron al bucket.
      * Se configuraron las políticas de acceso público para permitir que cualquier usuario pueda acceder al sitio web.
 2. **Bucket para Almacenamiento Multimedia:**
-   * **Captura:** Configuración de carpetas y políticas de acceso.
    * **Descripción:**
-     * Se creó un segundo bucket llamado `multimedia-semi1-seccion-g#`.
+     * Se creó un segundo bucket llamado `multimedia-semi1-b-g2`.
      * Dentro de este bucket, se crearon dos carpetas: `Fotos` y `Canciones`.
      * Las imágenes de los usuarios, portadas de playlists y canciones en formato `.mp3` se almacenan en estas carpetas.
      * Se configuraron políticas de acceso público para que estos archivos puedan ser accedidos desde la aplicación web.
@@ -94,7 +93,6 @@ Cada usuario fue creado con políticas personalizadas para restringir su acceso 
 ### **Load Balancer:**
 
 1. **Configuración del Balanceador de Carga:**
-   * **Captura:** Configuración del balanceador de carga.
    * **Descripción:**
      * Se configuró un balanceador de carga de tipo "Application Load Balancer" (ALB) para distribuir el tráfico entre las instancias de EC2.
      * Se definieron reglas de enrutamiento para redirigir las solicitudes HTTP/HTTPS a las instancias de EC2.
