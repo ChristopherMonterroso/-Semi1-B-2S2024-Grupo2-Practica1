@@ -19,6 +19,10 @@ app.use('/api/user/playlist', playlistRoutes);
 app.use('/api/user/playlist', playlistSongsRoutes);
 app.use('/api/user/favorite', FavoriteRoutes);
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the music app');
+});
+
 const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
