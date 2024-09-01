@@ -97,3 +97,21 @@ Para eliminar una canción, haz clic en el botón de eliminar junto a la canció
 ![Eliminar Canción](images/ManualDeUsuario/eliminar_cancion.png)
 
 ---
+
+## 9. Pagina Home
+
+En la página de home, se tiene la parte visual de canciones, se tiene la parte superior, la parte de opcines y la visualizacion de las canciones
+
+
+![Home](images/ManualDeUsuario/home.png)
+
+---
+
+## 9. Pagina Home - playlist
+
+En la página de home, se tiene la parte visual de canciones, al seleccionar playlist se le abrira una parte visual donde se tienen todas las playlist incluida la de favoritos
+
+
+![Home](images/ManualDeUsuario/playlist.png)
+
+---
